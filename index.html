@@ -3,159 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DGO | ICC CWCL II Sponsorship Playbook</title>
+    <title>DGO | Sponsorship Playbook</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --primary-blue: #3B82F6;
-            --accent-green: #22C55E;
-            --bg-dark: #020617;
-        }
-
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background-color: var(--bg-dark); 
-            color: #f8fafc;
-            overflow-x: hidden;
+            background-color: #050505; 
+            color: #ffffff;
+            margin: 0;
         }
 
-        /* Hero Image with sophisticated overlay */
+        /* Hero Image - Darker & Cleaner Overlay */
         .hero-section {
-            background: linear-gradient(to bottom, 
-                        rgba(2, 6, 23, 0.3) 0%, 
-                        rgba(2, 6, 23, 0.8) 70%, 
-                        rgba(2, 6, 23, 1) 100%), 
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 30%, rgba(0,0,0,0.2) 100%), 
                         url('assets/league2.png');
             background-size: cover;
             background-position: center;
             height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
         }
 
-        /* Modern Animation */
-        @keyframes reveal {
-            from { opacity: 0; transform: translateY(20px); filter: blur(10px); }
-            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        .text-huge {
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
         }
 
-        .reveal { animation: reveal 1s ease-out forwards; }
-        .delay-1 { animation-delay: 0.2s; opacity: 0; }
-        .delay-2 { animation-delay: 0.4s; opacity: 0; }
-        .delay-3 { animation-delay: 0.6s; opacity: 0; }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-        /* Bento Card Polish */
         .bento-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            border-radius: 32px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .bento-card:hover {
-            border-color: var(--primary-blue);
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-8px);
+            border-color: #3B82F6;
+            background: #161616;
         }
 
-        .text-gradient {
-            background: linear-gradient(135deg, #fff 0%, #3B82F6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .accent-blue { color: #3B82F6; }
+        
+        /* Remove italics, keep it bold and clean */
+        h1, h2, h3 { font-style: normal !important; }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 100px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: #3B82F6;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- Sticky Branding -->
-    <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center bg-gradient-to-b from-black/50 to-transparent">
-        <div class="text-2xl font-900 tracking-tighter">DGO <span class="text-blue-500 font-light">DIGITAL</span></div>
-        <div class="text-[10px] font-bold tracking-[0.3em] uppercase border-l border-blue-500 pl-4">
-            Official Broadcasting Partner
-        </div>
-    </nav>
-
-    <!-- PAGE 1: HERO -->
-    <section class="hero-section px-6">
-        <div class="max-w-6xl">
-            <h3 class="reveal delay-1 text-blue-400 font-bold tracking-[0.4em] uppercase text-sm md:text-base mb-4">
-                Official Digital Broadcasting Partner
-            </h3>
+    <!-- Page 1: Hero (Modern Left Alignment) -->
+    <section class="hero-section flex items-center px-10 md:px-24">
+        <div class="max-w-4xl">
+            <span class="tag">Official Digital Broadcasting Partner</span>
             
-            <h1 class="reveal delay-2 text-5xl md:text-8xl font-900 leading-[1.1] mb-8 uppercase italic">
-                ICC Cricket World Cup <br>
-                <span class="text-gradient">League 2</span>
+            <h1 class="text-huge font-900 uppercase">
+                ICC Cricket<br>
+                World Cup<br>
+                <span class="accent-blue">League 2</span>
             </h1>
 
-            <div class="reveal delay-3 space-y-4">
-                <p class="text-xl md:text-3xl font-light tracking-[0.2em] text-gray-200">
-                    Nepal • Oman • UAE
-                </p>
-                <div class="h-1 w-24 bg-blue-500 mx-auto my-6"></div>
-                <p class="text-lg md:text-xl font-bold tracking-widest uppercase text-white">
-                    March 10 - 20 | Kirtipur, Nepal
-                </p>
+            <div class="mt-12 flex flex-col md:flex-row gap-8 md:items-center">
+                <div>
+                    <p class="text-sm uppercase tracking-[0.3em] text-gray-500 font-bold">Teams</p>
+                    <p class="text-xl font-light">Nepal / Oman / UAE</p>
+                </div>
+                <div class="hidden md:block w-[1px] h-12 bg-gray-800"></div>
+                <div>
+                    <p class="text-sm uppercase tracking-[0.3em] text-gray-500 font-bold">Venue</p>
+                    <p class="text-xl font-light">Kirtipur, Nepal</p>
+                </div>
+                <div class="hidden md:block w-[1px] h-12 bg-gray-800"></div>
+                <div>
+                    <p class="text-sm uppercase tracking-[0.3em] text-gray-500 font-bold">Timeline</p>
+                    <p class="text-xl font-semibold italic">March 10 — 20</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PAGE 2: BENTO CONTENT -->
-    <main class="max-w-7xl mx-auto py-24 px-6">
-        
-        <div class="grid grid-cols-1 md:grid-cols-6 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
-            
-            <!-- Platform Intro (Large) -->
-            <div class="md:col-span-4 md:row-span-1 bento-card p-12 flex flex-col justify-end relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-10 opacity-10">
-                    <svg width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="0.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                </div>
-                <h4 class="text-blue-500 font-bold uppercase tracking-widest mb-2">The DGO Advantage</h4>
-                <h2 class="text-4xl font-900 mb-6">Revolutionizing Cricket Consumption</h2>
-                <p class="text-gray-400 text-lg max-w-xl">
-                    As the digital partner, DGO brings the TU Ground atmosphere to screens across the globe. We provide seamless, low-latency streaming coupled with interactive fan data.
-                </p>
-            </div>
-
-            <!-- Stats 1 -->
-            <div class="md:col-span-2 md:row-span-1 bento-card p-10 flex flex-col items-center justify-center text-center">
-                <span class="text-5xl mb-4">🏏</span>
-                <h4 class="text-4xl font-900 text-green-400">10M+</h4>
-                <p class="text-gray-400 font-bold uppercase tracking-tighter text-xs mt-2">Expected Total Reach</p>
-            </div>
-
-            <!-- Reach Stats 2 -->
-            <div class="md:col-span-2 md:row-span-1 bento-card p-10 flex flex-col items-center justify-center text-center border-t-2 border-blue-500/50">
-                <h4 class="text-4xl font-900 text-white">45%</h4>
-                <p class="text-gray-400 font-bold uppercase tracking-tighter text-xs mt-2">Gen Z & Millennial Core</p>
-            </div>
-
-            <!-- Sponsorship Preview (Wide) -->
-            <div class="md:col-span-4 md:row-span-1 bento-card p-12 bg-gradient-to-br from-blue-900/40 to-transparent flex items-center justify-between">
-                <div>
-                    <h2 class="text-3xl font-900 mb-4 uppercase italic">Partner With Us</h2>
-                    <p class="text-gray-300 mb-8 max-w-md text-sm">Unlock premium inventory ranging from Digital Scorecard branding to interactive mid-roll advertisements.</p>
-                    <a href="#packages" class="bg-white text-black text-xs font-900 uppercase tracking-widest px-8 py-4 rounded-full hover:bg-blue-500 hover:text-white transition-all">
-                        Explore Inventory
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <!-- Rotating Text/Element -->
-                    <div class="w-32 h-32 rounded-full border border-dashed border-gray-500 flex items-center justify-center animate-[spin_10s_linear_infinite]">
-                        <span class="text-[10px] text-gray-400 uppercase font-bold text-center">Nepal • UAE • Oman • </span>
-                    </div>
-                </div>
-            </div>
-
+    <!-- Page 2: Bento Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6 mb-12">
+            <h2 class="text-3xl font-800 uppercase tracking-tighter">Sponsorship <span class="text-gray-500">Inventory</span></h2>
         </div>
-    </main>
 
-    <footer class="py-20 text-center border-t border-white/5">
-        <p class="text-gray-500 text-xs font-bold uppercase tracking-[0.5em]">DGO Digital | 2026 Sponsorship Unit</p>
+        <div class="bento-grid">
+            <!-- Large Card -->
+            <div class="bento-card col-span-4 md:col-span-2 row-span-2">
+                <div>
+                    <span class="tag">Engagement</span>
+                    <h3 class="text-4xl font-800 mt-4 leading-tight">Digital First<br>Broadcast Experience</h3>
+                </div>
+                <p class="text-gray-400 mt-6">DGO isn't just a stream. We integrate real-time stats, fan polls, and interactive commerce directly into the viewer's journey.</p>
+            </div>
+
+            <!-- Reach Card -->
+            <div class="bento-card col-span-4 md:col-span-1">
+                <p class="text-gray-500 font-bold text-xs uppercase">Est. Reach</p>
+                <h3 class="text-5xl font-900 accent-blue mt-2">12M+</h3>
+                <p class="text-xs text-gray-400 mt-2">Unique Viewers across platforms</p>
+            </div>
+
+            <!-- Ad Units Card -->
+            <div class="bento-card col-span-4 md:col-span-1">
+                <p class="text-gray-500 font-bold text-xs uppercase">Inventory</p>
+                <h3 class="text-5xl font-900 mt-2">18+</h3>
+                <p class="text-xs text-gray-400 mt-2">Customizable Ad Touchpoints</p>
+            </div>
+
+            <!-- Wide Partner Card -->
+            <div class="bento-card col-span-4 md:col-span-2 flex-row items-center gap-6">
+                <div class="flex-1">
+                    <h3 class="text-2xl font-800">Platinum Partner</h3>
+                    <p class="text-sm text-gray-400 mt-2">Maximum visibility with Title integration and 100% Share of Voice during peak overs.</p>
+                </div>
+                <button class="bg-blue-600 px-6 py-3 rounded-xl font-bold text-xs uppercase">Details</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-10 text-center text-gray-700 text-[10px] uppercase font-bold tracking-[0.5em]">
+        DGO Digital — All Rights Reserved 2026
     </footer>
 
 </body>

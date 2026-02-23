@@ -3,28 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DGO | ICC CWCL II Playbook</title>
+    <title>DGO | Sponsorship Playbook</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Animation Library -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        html { scroll-behavior: smooth; }
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background-color: #050505; 
+            background-color: #000; 
             color: #ffffff;
             margin: 0;
             overflow-x: hidden;
         }
 
-        /* --- Background Motion --- */
+        /* --- Ken Burns Background Motion --- */
         @keyframes kenBurns {
             0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            100% { transform: scale(1.15); }
         }
 
         .page-wrapper {
@@ -33,73 +30,72 @@
             width: 100%;
             display: flex;
             align-items: center;
-            overflow: hidden;
+            justify-content: center;
+            padding: 40px 20px;
         }
 
         .bg-layer {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1; /* Lowest */
+            z-index: 1;
             background-size: cover;
             background-position: center;
-            animation: kenBurns 15s ease-out infinite alternate;
+            animation: kenBurns 20s ease-in-out infinite alternate;
         }
 
+        /* Heavy Overlay to fix brightness */
         .overlay {
             position: absolute;
             inset: 0;
-            z-index: 2; /* Between BG and Content */
+            z-index: 2;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.95) 100%);
         }
 
-        .page-1-overlay {
-            background: linear-gradient(70deg, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.4) 100%);
-        }
-
-        .page-2-overlay {
-            background: radial-gradient(circle at center, rgba(5,5,5,0.6) 0%, rgba(5,5,5,0.95) 100%);
-        }
-
-        /* --- Content Z-Index --- */
         .content-relative {
             position: relative;
-            z-index: 10; /* Highest */
+            z-index: 10;
             width: 100%;
+            max-width: 1200px;
         }
 
-        /* --- Bento & Fixtures --- */
+        /* --- Premium Bento Cards --- */
         .bento-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .bento-card:hover {
-            border-color: #3B82F6;
-            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(25px);
+            border-radius: 32px;
+            padding: 2.5rem;
+            height: 100%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
         .fixture-row {
             display: grid;
-            grid-template-columns: 80px 1fr 100px;
+            grid-template-columns: 100px 1fr 100px;
             align-items: center;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .flag-icon {
-            width: 24px;
-            height: 16px;
+            width: 28px;
+            height: 18px;
             object-fit: cover;
-            border-radius: 2px;
+            border-radius: 3px;
             display: inline-block;
-            margin: 0 6px;
+            margin: 0 8px;
             vertical-align: middle;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
         .accent-blue { color: #3B82F6; }
+        .accent-green { color: #22C55E; }
+
+        .text-huge {
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+        }
     </style>
 </head>
 <body>
@@ -107,73 +103,93 @@
     <!-- PAGE 1: HERO -->
     <section class="page-wrapper">
         <div class="bg-layer" style="background-image: url('assets/league2.png');"></div>
-        <div class="overlay page-1-overlay"></div>
+        <div class="overlay"></div>
         
-        <div class="content-relative px-10 md:px-24">
-            <div data-aos="fade-up" data-aos-duration="1000">
-                <span class="inline-block px-4 py-1 border border-blue-500 text-blue-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-8">
-                    Official Digital Broadcasting Partner
-                </span>
-                <h1 class="text-6xl md:text-8xl font-900 uppercase leading-[0.9] tracking-tighter mb-8">
-                    ICC Cricket<br>World Cup<br>
-                    <span class="accent-blue">League 2</span>
+        <div class="content-relative px-6">
+            <div data-aos="fade-up" data-aos-duration="1200">
+                <p class="text-blue-500 font-bold tracking-[0.5em] uppercase text-xs mb-6">Official Digital Broadcasting Partner</p>
+                <h1 class="text-huge font-900 uppercase">
+                    ICC CRICKET<br>WORLD CUP<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">LEAGUE 2</span>
                 </h1>
-                <p class="text-xl md:text-2xl font-light tracking-[0.2em] text-gray-300">NEPAL • OMAN • UAE</p>
-                <p class="text-sm md:text-lg font-bold mt-2 uppercase tracking-widest text-white">March 10 - 20 | Kirtipur, Nepal</p>
+                <div class="mt-12 flex flex-wrap gap-12 items-center">
+                    <div>
+                        <p class="text-gray-500 text-[10px] uppercase tracking-widest font-bold">Nation Tri-Series</p>
+                        <p class="text-xl font-light">Nepal • Oman • UAE</p>
+                    </div>
+                    <div class="w-[1px] h-10 bg-white/10 hidden md:block"></div>
+                    <div>
+                        <p class="text-gray-500 text-[10px] uppercase tracking-widest font-bold">Tournament Dates</p>
+                        <p class="text-xl font-bold italic">March 10 — 20</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PAGE 2: FIXTURES -->
+    <!-- PAGE 2: EVENT OVERVIEW -->
     <section class="page-wrapper">
         <div class="bg-layer" style="background-image: url('assets/page2.png');"></div>
-        <div class="overlay page-2-overlay"></div>
+        <div class="overlay" style="background: rgba(0,0,0,0.85);"></div>
 
-        <div class="content-relative w-full max-w-7xl mx-auto px-6 py-20">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="content-relative">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
                 
-                <!-- Info Cards -->
-                <div class="space-y-6" data-aos="fade-right">
-                    <div class="bento-card">
-                        <h2 class="text-4xl font-900 accent-blue tracking-tighter">DGO</h2>
-                        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Broadcasting Platform</p>
-                    </div>
-                    <div class="bento-card">
-                        <div class="flex gap-4">
-                            <div>
-                                <h3 class="text-xl font-800">ODI</h3>
-                                <p class="text-[10px] text-gray-500 uppercase font-bold">Format</p>
-                            </div>
-                            <div class="border-l border-white/10 pl-4">
-                                <h3 class="text-xl font-800">09:30 AM</h3>
-                                <p class="text-[10px] text-gray-500 uppercase font-bold">NST Start</p>
-                            </div>
+                <!-- Platform Card (Top Left) -->
+                <div class="md:col-span-4" data-aos="fade-right">
+                    <div class="bento-card flex flex-col justify-between border-l-4 border-l-blue-600">
+                        <div>
+                            <span class="bg-blue-600/20 text-blue-400 text-[10px] font-bold px-3 py-1 rounded-full uppercase">Digital Platform</span>
+                            <h2 class="text-6xl font-900 mt-6 tracking-tighter">DGO</h2>
                         </div>
-                    </div>
-                    <div class="bento-card border-blue-500/30">
-                        <p class="text-xs text-blue-400 font-bold uppercase mb-2">Venue</p>
-                        <h3 class="text-xl font-bold leading-tight">TU International Cricket Ground</h3>
-                        <p class="text-xs text-gray-400 mt-2">Kirtipur, Nepal</p>
+                        <p class="text-gray-400 text-sm mt-8 leading-relaxed">Exclusive high-definition streaming partner for the ICC CWC League 2 series.</p>
                     </div>
                 </div>
 
-                <!-- Fixtures (Larger Card) -->
-                <div class="md:col-span-2 bento-card" data-aos="fade-left">
-                    <h3 class="text-2xl font-900 uppercase italic tracking-tighter mb-8">Match Fixtures</h3>
-                    
-                    <div class="space-y-1">
-                        <!-- Fixture Items -->
-                        <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 10</span><div class="text-center font-bold">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 font-light italic text-gray-500">vs</span> <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> OMN</div><span class="text-right text-[10px] font-bold text-blue-500">KIRTIPUR</span></div>
+                <!-- Fixtures Card (Large Right) -->
+                <div class="md:col-span-8 md:row-span-2" data-aos="fade-left">
+                    <div class="bento-card">
+                        <div class="flex justify-between items-center mb-8">
+                            <h3 class="text-2xl font-800 uppercase italic tracking-tighter">Match Fixtures</h3>
+                            <div class="text-right">
+                                <p class="text-blue-500 font-bold text-[10px] uppercase tracking-widest">Kirtipur, Nepal</p>
+                                <p class="text-white text-xs font-medium">TU Int'l Cricket Ground</p>
+                            </div>
+                        </div>
                         
-                        <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 12</span><div class="text-center font-bold">OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> <span class="mx-2 font-light italic text-gray-500">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-gray-500 tracking-tighter">KIRTIPUR</span></div>
-                        
-                        <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 14</span><div class="text-center font-bold">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 font-light italic text-gray-500">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-gray-500 tracking-tighter">KIRTIPUR</span></div>
-                        
-                        <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 16</span><div class="text-center font-bold">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 font-light italic text-gray-500">vs</span> <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> OMN</div><span class="text-right text-[10px] font-bold text-gray-500 tracking-tighter">KIRTIPUR</span></div>
-                        
-                        <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 18</span><div class="text-center font-bold">OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> <span class="mx-2 font-light italic text-gray-500">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-gray-500 tracking-tighter">KIRTIPUR</span></div>
-                        
-                        <div class="fixture-row border-none"><span class="text-xs font-bold text-gray-500">MAR 20</span><div class="text-center font-bold">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 font-light italic text-blue-400">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-blue-500 tracking-tighter">KIRTIPUR</span></div>
+                        <div class="space-y-1">
+                            <!-- Match Rows -->
+                            <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 10</span><div class="text-center font-bold text-lg text-white">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 text-gray-600 font-normal text-sm italic">vs</span> <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> OMN</div><span class="text-right text-[10px] font-bold text-blue-500">09:30 AM</span></div>
+                            
+                            <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 12</span><div class="text-center font-bold text-lg">OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> <span class="mx-2 text-gray-600 font-normal text-sm italic">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-gray-500">09:30 AM</span></div>
+                            
+                            <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 14</span><div class="text-center font-bold text-lg">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 text-gray-600 font-normal text-sm italic">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-gray-500">09:30 AM</span></div>
+                            
+                            <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 16</span><div class="text-center font-bold text-lg">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 text-gray-600 font-normal text-sm italic">vs</span> <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> OMN</div><span class="text-right text-[10px] font-bold text-gray-500">09:30 AM</span></div>
+                            
+                            <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 18</span><div class="text-center font-bold text-lg">OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> <span class="mx-2 text-gray-600 font-normal text-sm italic">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-gray-500">09:30 AM</span></div>
+                            
+                            <div class="fixture-row border-none"><span class="text-xs font-bold text-gray-500">MAR 20</span><div class="text-center font-bold text-lg text-blue-400">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 text-white/20 font-normal text-sm italic">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-blue-400">09:30 AM</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Format Card (Bottom Left) -->
+                <div class="md:col-span-4" data-aos="fade-up">
+                    <div class="bento-card border-t-4 border-t-green-500">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Match Format</p>
+                                <h3 class="text-4xl font-900 mt-2">ODI</h3>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Innings</p>
+                                <h3 class="text-4xl font-900 mt-2">50<span class="text-sm font-light text-gray-500 ml-1">ov</span></h3>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-white/5">
+                            <p class="text-xs text-gray-400 italic font-medium leading-relaxed">All matches are sanctioned by the International Cricket Council (ICC) as part of the World Cup qualification pathway.</p>
+                        </div>
                     </div>
                 </div>
 
@@ -181,16 +197,10 @@
         </div>
     </section>
 
-    <!-- AOS Script -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: false,
-            mirror: true
-        });
+        AOS.init({ duration: 1000, once: false });
     </script>
-
 </body>
 </html>

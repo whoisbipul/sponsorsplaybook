@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DGO | Sponsorship Playbook</title>
+    <title>DGO | ICC CWCL II Playbook</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     
@@ -13,145 +13,167 @@
             background-color: #050505; 
             color: #ffffff;
             margin: 0;
+            overflow-x: hidden;
         }
 
-        /* Hero Image - Darker & Cleaner Overlay */
-        .hero-section {
-            background: linear-gradient(to right, rgba(0,0,0,0.9) 30%, rgba(0,0,0,0.2) 100%), 
-                        url('assets/league2.png');
+        /* --- Animations --- */
+        @keyframes bgZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        @keyframes textReveal {
+            from { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .animate-reveal {
+            opacity: 0;
+            animation: textReveal 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* --- Page Containers --- */
+        .page-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            scroll-snap-align: start;
+        }
+
+        .bg-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            animation: bgZoom 20s linear infinite alternate;
         }
 
-        .text-huge {
-            font-size: clamp(3rem, 8vw, 7rem);
-            line-height: 0.9;
-            letter-spacing: -0.04em;
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.4) 100%);
+            z-index: 0;
         }
 
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: minmax(200px, auto);
-            gap: 1.5rem;
-            padding: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+        .page-2-overlay {
+            background: radial-gradient(circle at center, rgba(5,5,5,0.7) 0%, rgba(5,5,5,1) 100%);
         }
 
+        /* --- Bento Styling --- */
         .bento-card {
-            background: #111;
-            border: 1px solid #222;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
             border-radius: 24px;
-            padding: 2rem;
+            padding: 1.5rem;
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        }
+        .bento-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: #3B82F6;
         }
 
-        .bento-card:hover {
-            border-color: #3B82F6;
-            background: #161616;
+        .fixture-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
         }
 
         .accent-blue { color: #3B82F6; }
-        
-        /* Remove italics, keep it bold and clean */
-        h1, h2, h3 { font-style: normal !important; }
-
-        .tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 100px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            color: #3B82F6;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
     </style>
 </head>
-<body>
+<body class="snap-y snap-mandatory">
 
-    <!-- Page 1: Hero (Modern Left Alignment) -->
-    <section class="hero-section flex items-center px-10 md:px-24">
-        <div class="max-w-4xl">
-            <span class="tag">Official Digital Broadcasting Partner</span>
-            
-            <h1 class="text-huge font-900 uppercase">
-                ICC Cricket<br>
-                World Cup<br>
+    <!-- PAGE 1: HERO -->
+    <section class="page-container snap-start">
+        <div class="bg-image" style="background-image: url('assets/league2.png');"></div>
+        <div class="overlay"></div>
+        
+        <div class="relative z-10 px-10 md:px-24 max-w-5xl">
+            <span class="animate-reveal delay-1 inline-block px-3 py-1 border border-blue-500 text-blue-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
+                Official Digital Broadcasting Partner
+            </span>
+            <h1 class="animate-reveal delay-2 text-6xl md:text-8xl font-900 uppercase leading-[0.9] tracking-tighter">
+                ICC Cricket<br>World Cup<br>
                 <span class="accent-blue">League 2</span>
             </h1>
-
-            <div class="mt-12 flex flex-col md:flex-row gap-8 md:items-center">
-                <div>
-                    <p class="text-sm uppercase tracking-[0.3em] text-gray-500 font-bold">Teams</p>
-                    <p class="text-xl font-light">Nepal / Oman / UAE</p>
-                </div>
-                <div class="hidden md:block w-[1px] h-12 bg-gray-800"></div>
-                <div>
-                    <p class="text-sm uppercase tracking-[0.3em] text-gray-500 font-bold">Venue</p>
-                    <p class="text-xl font-light">Kirtipur, Nepal</p>
-                </div>
-                <div class="hidden md:block w-[1px] h-12 bg-gray-800"></div>
-                <div>
-                    <p class="text-sm uppercase tracking-[0.3em] text-gray-500 font-bold">Timeline</p>
-                    <p class="text-xl font-semibold italic">March 10 — 20</p>
-                </div>
+            <div class="animate-reveal delay-3 mt-10">
+                <p class="text-xl md:text-2xl font-light tracking-[0.2em] text-gray-300">NEPAL • OMAN • UAE</p>
+                <p class="text-sm md:text-lg font-bold mt-2 uppercase tracking-widest text-white">March 10 - 20 | Kirtipur, Nepal</p>
             </div>
         </div>
     </section>
 
-    <!-- Page 2: Bento Section -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-6 mb-12">
-            <h2 class="text-3xl font-800 uppercase tracking-tighter">Sponsorship <span class="text-gray-500">Inventory</span></h2>
-        </div>
+    <!-- PAGE 2: EVENT OVERVIEW -->
+    <section class="page-container snap-start bg-[#050505]">
+        <div class="bg-image" style="background-image: url('assets/page2.png');"></div>
+        <div class="overlay page-2-overlay"></div>
 
-        <div class="bento-grid">
-            <!-- Large Card -->
-            <div class="bento-card col-span-4 md:col-span-2 row-span-2">
-                <div>
-                    <span class="tag">Engagement</span>
-                    <h3 class="text-4xl font-800 mt-4 leading-tight">Digital First<br>Broadcast Experience</h3>
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                
+                <!-- Quick Info -->
+                <div class="md:col-span-1 space-y-6">
+                    <div class="bento-card">
+                        <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Platform</p>
+                        <h2 class="text-3xl font-900 accent-blue">DGO</h2>
+                        <p class="text-xs text-gray-400 mt-1">Digital Broadcast</p>
+                    </div>
+                    <div class="bento-card">
+                        <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Format</p>
+                        <h2 class="text-3xl font-900">ODI</h2>
+                        <p class="text-xs text-gray-400 mt-1">50 Overs</p>
+                    </div>
+                    <div class="bento-card">
+                        <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Start Time</p>
+                        <h2 class="text-xl font-bold">9:30 AM NST</h2>
+                    </div>
                 </div>
-                <p class="text-gray-400 mt-6">DGO isn't just a stream. We integrate real-time stats, fan polls, and interactive commerce directly into the viewer's journey.</p>
-            </div>
 
-            <!-- Reach Card -->
-            <div class="bento-card col-span-4 md:col-span-1">
-                <p class="text-gray-500 font-bold text-xs uppercase">Est. Reach</p>
-                <h3 class="text-5xl font-900 accent-blue mt-2">12M+</h3>
-                <p class="text-xs text-gray-400 mt-2">Unique Viewers across platforms</p>
-            </div>
-
-            <!-- Ad Units Card -->
-            <div class="bento-card col-span-4 md:col-span-1">
-                <p class="text-gray-500 font-bold text-xs uppercase">Inventory</p>
-                <h3 class="text-5xl font-900 mt-2">18+</h3>
-                <p class="text-xs text-gray-400 mt-2">Customizable Ad Touchpoints</p>
-            </div>
-
-            <!-- Wide Partner Card -->
-            <div class="bento-card col-span-4 md:col-span-2 flex-row items-center gap-6">
-                <div class="flex-1">
-                    <h3 class="text-2xl font-800">Platinum Partner</h3>
-                    <p class="text-sm text-gray-400 mt-2">Maximum visibility with Title integration and 100% Share of Voice during peak overs.</p>
+                <!-- Fixtures Bento -->
+                <div class="md:col-span-2 bento-card">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-800 uppercase italic tracking-tighter">Match Fixtures</h3>
+                        <span class="text-[10px] bg-blue-600 px-2 py-1 rounded font-bold">LIVE ON DGO</span>
+                    </div>
+                    
+                    <div class="space-y-1">
+                        <div class="fixture-row font-bold text-gray-500 text-[10px] uppercase">
+                            <span>Date</span><span>Matchup</span><span>Venue</span>
+                        </div>
+                        <div class="fixture-row"><span>MAR 10</span><span class="text-white font-bold text-center">NEP vs OMN</span><span class="text-right">Kirtipur</span></div>
+                        <div class="fixture-row"><span>MAR 12</span><span class="text-white font-bold text-center">OMN vs UAE</span><span class="text-right">Kirtipur</span></div>
+                        <div class="fixture-row"><span>MAR 14</span><span class="text-white font-bold text-center">NEP vs UAE</span><span class="text-right">Kirtipur</span></div>
+                        <div class="fixture-row"><span>MAR 16</span><span class="text-white font-bold text-center">NEP vs OMN</span><span class="text-right">Kirtipur</span></div>
+                        <div class="fixture-row"><span>MAR 18</span><span class="text-white font-bold text-center">OMN vs UAE</span><span class="text-right">Kirtipur</span></div>
+                        <div class="fixture-row border-none"><span>MAR 20</span><span class="text-white font-bold text-center text-blue-400">NEP vs UAE</span><span class="text-right">Kirtipur</span></div>
+                    </div>
                 </div>
-                <button class="bg-blue-600 px-6 py-3 rounded-xl font-bold text-xs uppercase">Details</button>
+
+                <!-- Venue Info -->
+                <div class="md:col-span-1 bento-card flex flex-col justify-end min-h-[300px]">
+                    <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest mb-2">Location</p>
+                    <h2 class="text-2xl font-900 leading-tight">TU International<br>Cricket Ground</h2>
+                    <p class="text-sm text-gray-400 mt-4 font-light">The iconic heart of Nepal cricket, Kirtipur.</p>
+                    <div class="mt-6 h-32 w-full bg-blue-500/10 rounded-xl border border-blue-500/20 flex items-center justify-center">
+                        <span class="text-xs text-blue-400 font-bold uppercase tracking-widest">Map View</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
-
-    <footer class="p-10 text-center text-gray-700 text-[10px] uppercase font-bold tracking-[0.5em]">
-        DGO Digital — All Rights Reserved 2026
-    </footer>
 
 </body>
 </html>

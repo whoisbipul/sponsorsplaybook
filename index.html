@@ -13,7 +13,6 @@
             background-color: #050505; 
             color: #ffffff;
             margin: 0;
-            overflow-x: hidden;
         }
 
         /* --- Animations --- */
@@ -23,7 +22,7 @@
         }
 
         @keyframes textReveal {
-            from { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
             to { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
 
@@ -35,12 +34,11 @@
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
-        .delay-4 { animation-delay: 0.8s; }
 
         /* --- Page Containers --- */
         .page-container {
             position: relative;
-            height: 100vh;
+            min-height: 100vh;
             width: 100%;
             overflow: hidden;
             display: flex;
@@ -48,10 +46,11 @@
             scroll-snap-align: start;
         }
 
-        .bg-image {
+        /* Fixed Background logic to ensure visibility */
+        .bg-layer {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
+            z-index: -2;
             background-size: cover;
             background-position: center;
             animation: bgZoom 20s linear infinite alternate;
@@ -60,120 +59,196 @@
         .overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to right, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.4) 100%);
-            z-index: 0;
+            z-index: -1;
+        }
+
+        .page-1-overlay {
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 30%, rgba(0,0,0,0.3) 100%);
         }
 
         .page-2-overlay {
-            background: radial-gradient(circle at center, rgba(5,5,5,0.7) 0%, rgba(5,5,5,1) 100%);
+            background: linear-gradient(to bottom, rgba(5,5,5,0.8) 0%, rgba(5,5,5,0.95) 100%);
         }
 
-        /* --- Bento Styling --- */
+        /* --- Bento & Fixtures --- */
         .bento-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border-radius: 24px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        .bento-card:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: #3B82F6;
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 2rem;
         }
 
         .fixture-row {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.85rem;
+            grid-template-columns: 80px 1fr 100px;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .flag-icon {
+            width: 24px;
+            height: 18px;
+            object-fit: cover;
+            border-radius: 2px;
+            display: inline-block;
+            margin: 0 4px;
+            vertical-align: middle;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
         .accent-blue { color: #3B82F6; }
+        
+        .snap-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
     </style>
 </head>
-<body class="snap-y snap-mandatory">
+<body>
 
-    <!-- PAGE 1: HERO -->
-    <section class="page-container snap-start">
-        <div class="bg-image" style="background-image: url('assets/league2.png');"></div>
-        <div class="overlay"></div>
+    <div class="snap-container">
         
-        <div class="relative z-10 px-10 md:px-24 max-w-5xl">
-            <span class="animate-reveal delay-1 inline-block px-3 py-1 border border-blue-500 text-blue-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
-                Official Digital Broadcasting Partner
-            </span>
-            <h1 class="animate-reveal delay-2 text-6xl md:text-8xl font-900 uppercase leading-[0.9] tracking-tighter">
-                ICC Cricket<br>World Cup<br>
-                <span class="accent-blue">League 2</span>
-            </h1>
-            <div class="animate-reveal delay-3 mt-10">
-                <p class="text-xl md:text-2xl font-light tracking-[0.2em] text-gray-300">NEPAL • OMAN • UAE</p>
-                <p class="text-sm md:text-lg font-bold mt-2 uppercase tracking-widest text-white">March 10 - 20 | Kirtipur, Nepal</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PAGE 2: EVENT OVERVIEW -->
-    <section class="page-container snap-start bg-[#050505]">
-        <div class="bg-image" style="background-image: url('assets/page2.png');"></div>
-        <div class="overlay page-2-overlay"></div>
-
-        <div class="relative z-10 w-full max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                
-                <!-- Quick Info -->
-                <div class="md:col-span-1 space-y-6">
-                    <div class="bento-card">
-                        <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Platform</p>
-                        <h2 class="text-3xl font-900 accent-blue">DGO</h2>
-                        <p class="text-xs text-gray-400 mt-1">Digital Broadcast</p>
-                    </div>
-                    <div class="bento-card">
-                        <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Format</p>
-                        <h2 class="text-3xl font-900">ODI</h2>
-                        <p class="text-xs text-gray-400 mt-1">50 Overs</p>
-                    </div>
-                    <div class="bento-card">
-                        <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Start Time</p>
-                        <h2 class="text-xl font-bold">9:30 AM NST</h2>
-                    </div>
+        <!-- PAGE 1: HERO -->
+        <section class="page-container">
+            <!-- Ensure path matches exactly: assets/league2.png -->
+            <div class="bg-layer" style="background-image: url('assets/league2.png');"></div>
+            <div class="overlay page-1-overlay"></div>
+            
+            <div class="relative z-10 px-10 md:px-24">
+                <span class="animate-reveal delay-1 inline-block px-3 py-1 border border-blue-500 text-blue-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-6">
+                    Official Digital Broadcasting Partner
+                </span>
+                <h1 class="animate-reveal delay-2 text-6xl md:text-8xl font-900 uppercase leading-[0.9] tracking-tighter mb-8">
+                    ICC Cricket<br>World Cup<br>
+                    <span class="accent-blue">League 2</span>
+                </h1>
+                <div class="animate-reveal delay-3">
+                    <p class="text-xl md:text-2xl font-light tracking-[0.2em] text-gray-300">NEPAL • OMAN • UAE</p>
+                    <p class="text-sm md:text-lg font-bold mt-2 uppercase tracking-widest text-white">March 10 - 20 | Kirtipur, Nepal</p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Fixtures Bento -->
-                <div class="md:col-span-2 bento-card">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-xl font-800 uppercase italic tracking-tighter">Match Fixtures</h3>
-                        <span class="text-[10px] bg-blue-600 px-2 py-1 rounded font-bold">LIVE ON DGO</span>
-                    </div>
+        <!-- PAGE 2: FIXTURES -->
+        <section class="page-container">
+            <!-- Background Image Fix -->
+            <div class="bg-layer" style="background-image: url('assets/page2.png');"></div>
+            <div class="overlay page-2-overlay"></div>
+
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     
-                    <div class="space-y-1">
-                        <div class="fixture-row font-bold text-gray-500 text-[10px] uppercase">
-                            <span>Date</span><span>Matchup</span><span>Venue</span>
+                    <!-- Left Sidebar -->
+                    <div class="space-y-6">
+                        <div class="bento-card">
+                            <h2 class="text-4xl font-900 accent-blue mb-1">DGO</h2>
+                            <p class="text-xs font-bold uppercase tracking-widest text-gray-500">Broadcasting Platform</p>
                         </div>
-                        <div class="fixture-row"><span>MAR 10</span><span class="text-white font-bold text-center">NEP vs OMN</span><span class="text-right">Kirtipur</span></div>
-                        <div class="fixture-row"><span>MAR 12</span><span class="text-white font-bold text-center">OMN vs UAE</span><span class="text-right">Kirtipur</span></div>
-                        <div class="fixture-row"><span>MAR 14</span><span class="text-white font-bold text-center">NEP vs UAE</span><span class="text-right">Kirtipur</span></div>
-                        <div class="fixture-row"><span>MAR 16</span><span class="text-white font-bold text-center">NEP vs OMN</span><span class="text-right">Kirtipur</span></div>
-                        <div class="fixture-row"><span>MAR 18</span><span class="text-white font-bold text-center">OMN vs UAE</span><span class="text-right">Kirtipur</span></div>
-                        <div class="fixture-row border-none"><span>MAR 20</span><span class="text-white font-bold text-center text-blue-400">NEP vs UAE</span><span class="text-right">Kirtipur</span></div>
+                        <div class="bento-card">
+                            <div class="flex gap-4">
+                                <div>
+                                    <h3 class="text-xl font-800">ODI</h3>
+                                    <p class="text-[10px] text-gray-500 uppercase">Format</p>
+                                </div>
+                                <div class="border-l border-white/10 pl-4">
+                                    <h3 class="text-xl font-800">9:30 AM</h3>
+                                    <p class="text-[10px] text-gray-500 uppercase">NST Start</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bento-card bg-blue-600/10 border-blue-500/30">
+                            <p class="text-xs text-blue-400 font-bold uppercase mb-2">Venue</p>
+                            <h3 class="text-xl font-bold leading-tight">TU International Cricket Ground</h3>
+                            <p class="text-xs text-gray-400 mt-2">Kirtipur, Nepal</p>
+                        </div>
+                    </div>
+
+                    <!-- Fixtures List (Center-Right) -->
+                    <div class="md:col-span-2 bento-card">
+                        <div class="flex justify-between items-center mb-8">
+                            <h3 class="text-2xl font-900 uppercase italic tracking-tighter">Match Fixtures</h3>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                                <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Live Schedule</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <!-- Match 1 -->
+                            <div class="fixture-row">
+                                <span class="text-xs font-bold text-gray-500">MAR 10</span>
+                                <div class="text-center font-bold text-sm md:text-base">
+                                    <img src="https://flagcdn.com/w40/np.png" class="flag-icon" alt="Nepal"> NEP 
+                                    <span class="mx-2 text-gray-600 text-xs font-light font-normal italic">vs</span> 
+                                    OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon" alt="Oman">
+                                </div>
+                                <span class="text-right text-[10px] font-bold text-blue-500">KIRTIPUR</span>
+                            </div>
+
+                            <!-- Match 2 -->
+                            <div class="fixture-row">
+                                <span class="text-xs font-bold text-gray-500">MAR 12</span>
+                                <div class="text-center font-bold text-sm md:text-base">
+                                    <img src="https://flagcdn.com/w40/om.png" class="flag-icon" alt="Oman"> OMN 
+                                    <span class="mx-2 text-gray-600 text-xs font-light font-normal italic">vs</span> 
+                                    UAE <img src="https://flagcdn.com/w40/ae.png" class="flag-icon" alt="UAE">
+                                </div>
+                                <span class="text-right text-[10px] font-bold text-gray-500">KIRTIPUR</span>
+                            </div>
+
+                            <!-- Match 3 -->
+                            <div class="fixture-row">
+                                <span class="text-xs font-bold text-gray-500">MAR 14</span>
+                                <div class="text-center font-bold text-sm md:text-base">
+                                    <img src="https://flagcdn.com/w40/np.png" class="flag-icon" alt="Nepal"> NEP 
+                                    <span class="mx-2 text-gray-600 text-xs font-light font-normal italic">vs</span> 
+                                    UAE <img src="https://flagcdn.com/w40/ae.png" class="flag-icon" alt="UAE">
+                                </div>
+                                <span class="text-right text-[10px] font-bold text-gray-500">KIRTIPUR</span>
+                            </div>
+
+                            <!-- Match 4 -->
+                            <div class="fixture-row">
+                                <span class="text-xs font-bold text-gray-500">MAR 16</span>
+                                <div class="text-center font-bold text-sm md:text-base">
+                                    <img src="https://flagcdn.com/w40/np.png" class="flag-icon" alt="Nepal"> NEP 
+                                    <span class="mx-2 text-gray-600 text-xs font-light font-normal italic">vs</span> 
+                                    OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon" alt="Oman">
+                                </div>
+                                <span class="text-right text-[10px] font-bold text-gray-500">KIRTIPUR</span>
+                            </div>
+
+                            <!-- Match 5 -->
+                            <div class="fixture-row">
+                                <span class="text-xs font-bold text-gray-500">MAR 18</span>
+                                <div class="text-center font-bold text-sm md:text-base">
+                                    <img src="https://flagcdn.com/w40/om.png" class="flag-icon" alt="Oman"> OMN 
+                                    <span class="mx-2 text-gray-600 text-xs font-light font-normal italic">vs</span> 
+                                    UAE <img src="https://flagcdn.com/w40/ae.png" class="flag-icon" alt="UAE">
+                                </div>
+                                <span class="text-right text-[10px] font-bold text-gray-500">KIRTIPUR</span>
+                            </div>
+
+                            <!-- Match 6 -->
+                            <div class="fixture-row border-none">
+                                <span class="text-xs font-bold text-gray-500">MAR 20</span>
+                                <div class="text-center font-bold text-sm md:text-base">
+                                    <img src="https://flagcdn.com/w40/np.png" class="flag-icon" alt="Nepal"> NEP 
+                                    <span class="mx-2 text-gray-600 text-xs font-light font-normal italic">vs</span> 
+                                    UAE <img src="https://flagcdn.com/w40/ae.png" class="flag-icon" alt="UAE">
+                                </div>
+                                <span class="text-right text-[10px] font-bold text-blue-500 font-bold">FINAL TIE</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Venue Info -->
-                <div class="md:col-span-1 bento-card flex flex-col justify-end min-h-[300px]">
-                    <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest mb-2">Location</p>
-                    <h2 class="text-2xl font-900 leading-tight">TU International<br>Cricket Ground</h2>
-                    <p class="text-sm text-gray-400 mt-4 font-light">The iconic heart of Nepal cricket, Kirtipur.</p>
-                    <div class="mt-6 h-32 w-full bg-blue-500/10 rounded-xl border border-blue-500/20 flex items-center justify-center">
-                        <span class="text-xs text-blue-400 font-bold uppercase tracking-widest">Map View</span>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
+
+    </div>
 
 </body>
 </html>

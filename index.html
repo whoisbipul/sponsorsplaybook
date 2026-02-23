@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DGO | ICC CWCL II Playbook</title>
     
-    <!-- Scripts & Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
     <!-- Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <style>
+        html { scroll-behavior: smooth; }
         body { 
             font-family: 'Montserrat', sans-serif; 
             background-color: #050505; 
@@ -21,246 +21,173 @@
             overflow-x: hidden;
         }
 
-        /* --- Global Background Motion --- */
+        /* --- Background Motion --- */
         @keyframes kenBurns {
-            0% { transform: scale(1) translate(0, 0); }
-            100% { transform: scale(1.15) translate(-1%, -1%); }
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .page-wrapper {
+            position: relative;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
         }
 
         .bg-layer {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2;
+            z-index: 1; /* Lowest */
             background-size: cover;
             background-position: center;
-            animation: kenBurns 20s ease-out infinite alternate;
-        }
-
-        /* --- Page Layouts --- */
-        .page-container {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            scroll-snap-align: start;
+            animation: kenBurns 15s ease-out infinite alternate;
         }
 
         .overlay {
             position: absolute;
             inset: 0;
-            z-index: -1;
+            z-index: 2; /* Between BG and Content */
         }
 
         .page-1-overlay {
-            background: linear-gradient(70deg, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.2) 100%);
+            background: linear-gradient(70deg, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.4) 100%);
         }
 
         .page-2-overlay {
-            background: radial-gradient(circle at center, rgba(5,5,5,0.7) 0%, rgba(5,5,5,0.98) 100%);
+            background: radial-gradient(circle at center, rgba(5,5,5,0.6) 0%, rgba(5,5,5,0.95) 100%);
         }
 
-        /* --- Bento Styling --- */
+        /* --- Content Z-Index --- */
+        .content-relative {
+            position: relative;
+            z-index: 10; /* Highest */
+            width: 100%;
+        }
+
+        /* --- Bento & Fixtures --- */
         .bento-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            border-radius: 30px;
+            border-radius: 24px;
             padding: 2rem;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .bento-card:hover {
             border-color: #3B82F6;
-            background: rgba(255, 255, 255, 0.05);
-            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.06);
         }
 
         .fixture-row {
             display: grid;
-            grid-template-columns: 70px 1fr 80px;
+            grid-template-columns: 80px 1fr 100px;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         .flag-icon {
-            width: 22px;
-            height: 15px;
+            width: 24px;
+            height: 16px;
             object-fit: cover;
             border-radius: 2px;
             display: inline-block;
             margin: 0 6px;
             vertical-align: middle;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
 
         .accent-blue { color: #3B82F6; }
-
-        .snap-container {
-            height: 100vh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-        }
-
-        /* Scrollbar styling */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #3B82F6; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="snap-container">
+    <!-- PAGE 1: HERO -->
+    <section class="page-wrapper">
+        <div class="bg-layer" style="background-image: url('assets/league2.png');"></div>
+        <div class="overlay page-1-overlay"></div>
         
-        <!-- PAGE 1: HERO -->
-        <section class="page-container">
-            <div class="bg-layer" style="background-image: url('assets/league2.png');"></div>
-            <div class="overlay page-1-overlay"></div>
-            
-            <div class="relative z-10 px-10 md:px-24 w-full">
-                <div data-aos="fade-right" data-aos-duration="1200">
-                    <span class="inline-block px-4 py-1.5 border border-blue-500/50 text-blue-400 text-[10px] font-bold uppercase tracking-[0.4em] mb-8 rounded-full">
-                        Official Digital Broadcasting Partner
-                    </span>
-                    <h1 class="text-6xl md:text-9xl font-900 uppercase leading-[0.85] tracking-tighter mb-8">
-                        ICC Cricket<br>World Cup<br>
-                        <span class="accent-blue">League 2</span>
-                    </h1>
-                    <div class="mt-12 space-y-2">
-                        <p class="text-xl md:text-2xl font-light tracking-[0.3em] text-gray-400">NEPAL • OMAN • UAE</p>
-                        <p class="text-sm md:text-lg font-bold uppercase tracking-widest text-white">March 10 - 20 | Kirtipur, Nepal</p>
-                    </div>
-                </div>
+        <div class="content-relative px-10 md:px-24">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <span class="inline-block px-4 py-1 border border-blue-500 text-blue-500 text-[10px] font-bold uppercase tracking-[0.4em] mb-8">
+                    Official Digital Broadcasting Partner
+                </span>
+                <h1 class="text-6xl md:text-8xl font-900 uppercase leading-[0.9] tracking-tighter mb-8">
+                    ICC Cricket<br>World Cup<br>
+                    <span class="accent-blue">League 2</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-light tracking-[0.2em] text-gray-300">NEPAL • OMAN • UAE</p>
+                <p class="text-sm md:text-lg font-bold mt-2 uppercase tracking-widest text-white">March 10 - 20 | Kirtipur, Nepal</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- PAGE 2: FIXTURES -->
-        <section class="page-container">
-            <div class="bg-layer" style="background-image: url('assets/page2.png');"></div>
-            <div class="overlay page-2-overlay"></div>
+    <!-- PAGE 2: FIXTURES -->
+    <section class="page-wrapper">
+        <div class="bg-layer" style="background-image: url('assets/page2.png');"></div>
+        <div class="overlay page-2-overlay"></div>
 
-            <div class="relative z-10 w-full max-w-7xl mx-auto px-6">
+        <div class="content-relative w-full max-w-7xl mx-auto px-6 py-20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
-                    
-                    <!-- Left Stats -->
-                    <div class="md:col-span-4 flex flex-col gap-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="bento-card">
-                            <h2 class="text-5xl font-900 accent-blue mb-1 tracking-tighter">DGO</h2>
-                            <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500">Global Broadcaster</p>
-                        </div>
-                        <div class="bento-card flex-1">
-                            <div class="flex items-center justify-between mb-8">
-                                <div>
-                                    <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Format</p>
-                                    <h3 class="text-2xl font-800">ODI</h3>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Time</p>
-                                    <h3 class="text-2xl font-800">09:30</h3>
-                                </div>
+                <!-- Info Cards -->
+                <div class="space-y-6" data-aos="fade-right">
+                    <div class="bento-card">
+                        <h2 class="text-4xl font-900 accent-blue tracking-tighter">DGO</h2>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Broadcasting Platform</p>
+                    </div>
+                    <div class="bento-card">
+                        <div class="flex gap-4">
+                            <div>
+                                <h3 class="text-xl font-800">ODI</h3>
+                                <p class="text-[10px] text-gray-500 uppercase font-bold">Format</p>
                             </div>
-                            <div class="pt-6 border-t border-white/5">
-                                <p class="text-[10px] text-blue-400 font-bold uppercase tracking-widest mb-2">Venue</p>
-                                <h3 class="text-xl font-bold leading-tight">TU International Cricket Ground</h3>
-                                <p class="text-xs text-gray-400 mt-2 font-light uppercase tracking-tighter">Kirtipur, Nepal</p>
+                            <div class="border-l border-white/10 pl-4">
+                                <h3 class="text-xl font-800">09:30 AM</h3>
+                                <p class="text-[10px] text-gray-500 uppercase font-bold">NST Start</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Fixtures -->
-                    <div class="md:col-span-8 bento-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="flex justify-between items-center mb-10">
-                            <div>
-                                <h3 class="text-3xl font-900 uppercase tracking-tighter">Match Schedule</h3>
-                                <p class="text-[10px] text-gray-500 uppercase font-bold tracking-[0.2em] mt-1">Official Fixtures List</p>
-                            </div>
-                            <div class="bg-white/5 px-4 py-2 rounded-2xl border border-white/10">
-                                <span class="text-[10px] font-bold tracking-widest text-blue-400 uppercase italic">Digital Stadium Experience</span>
-                            </div>
-                        </div>
-
-                        <div class="space-y-1">
-                            <!-- Match 1 -->
-                            <div class="fixture-row">
-                                <span class="text-xs font-bold text-gray-500 tracking-tighter">MAR 10</span>
-                                <div class="text-center font-bold text-sm md:text-lg">
-                                    NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> 
-                                    <span class="mx-3 text-gray-600 font-light italic">vs</span> 
-                                    <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> OMN
-                                </div>
-                                <span class="text-right text-[9px] font-bold text-gray-600 uppercase">Kirtipur</span>
-                            </div>
-
-                            <!-- Match 2 -->
-                            <div class="fixture-row">
-                                <span class="text-xs font-bold text-gray-500 tracking-tighter">MAR 12</span>
-                                <div class="text-center font-bold text-sm md:text-lg">
-                                    OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> 
-                                    <span class="mx-3 text-gray-600 font-light italic">vs</span> 
-                                    <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE
-                                </div>
-                                <span class="text-right text-[9px] font-bold text-gray-600 uppercase tracking-tighter">Kirtipur</span>
-                            </div>
-
-                            <!-- Match 3 -->
-                            <div class="fixture-row">
-                                <span class="text-xs font-bold text-gray-500 tracking-tighter">MAR 14</span>
-                                <div class="text-center font-bold text-sm md:text-lg">
-                                    NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> 
-                                    <span class="mx-3 text-gray-600 font-light italic">vs</span> 
-                                    <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE
-                                </div>
-                                <span class="text-right text-[9px] font-bold text-gray-600 uppercase tracking-tighter">Kirtipur</span>
-                            </div>
-
-                            <!-- Match 4 -->
-                            <div class="fixture-row">
-                                <span class="text-xs font-bold text-gray-500 tracking-tighter">MAR 16</span>
-                                <div class="text-center font-bold text-sm md:text-lg">
-                                    NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> 
-                                    <span class="mx-3 text-gray-600 font-light italic">vs</span> 
-                                    <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> OMN
-                                </div>
-                                <span class="text-right text-[9px] font-bold text-gray-600 uppercase tracking-tighter">Kirtipur</span>
-                            </div>
-
-                            <!-- Match 5 -->
-                            <div class="fixture-row">
-                                <span class="text-xs font-bold text-gray-500 tracking-tighter">MAR 18</span>
-                                <div class="text-center font-bold text-sm md:text-lg">
-                                    OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> 
-                                    <span class="mx-3 text-gray-600 font-light italic">vs</span> 
-                                    <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE
-                                </div>
-                                <span class="text-right text-[9px] font-bold text-gray-600 uppercase tracking-tighter">Kirtipur</span>
-                            </div>
-
-                            <!-- Match 6 -->
-                            <div class="fixture-row border-none">
-                                <span class="text-xs font-bold text-gray-500 tracking-tighter">MAR 20</span>
-                                <div class="text-center font-bold text-sm md:text-lg">
-                                    NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> 
-                                    <span class="mx-3 text-gray-600 font-light italic text-blue-400">vs</span> 
-                                    <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE
-                                </div>
-                                <span class="text-right text-[9px] font-bold text-blue-500 uppercase tracking-tighter">Kirtipur</span>
-                            </div>
-                        </div>
+                    <div class="bento-card border-blue-500/30">
+                        <p class="text-xs text-blue-400 font-bold uppercase mb-2">Venue</p>
+                        <h3 class="text-xl font-bold leading-tight">TU International Cricket Ground</h3>
+                        <p class="text-xs text-gray-400 mt-2">Kirtipur, Nepal</p>
                     </div>
                 </div>
+
+                <!-- Fixtures (Larger Card) -->
+                <div class="md:col-span-2 bento-card" data-aos="fade-left">
+                    <h3 class="text-2xl font-900 uppercase italic tracking-tighter mb-8">Match Fixtures</h3>
+                    
+                    <div class="space-y-1">
+                        <!-- Fixture Items -->
+                        <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 10</span><div class="text-center font-bold">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 font-light italic text-gray-500">vs</span> <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> OMN</div><span class="text-right text-[10px] font-bold text-blue-500">KIRTIPUR</span></div>
+                        
+                        <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 12</span><div class="text-center font-bold">OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> <span class="mx-2 font-light italic text-gray-500">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-gray-500 tracking-tighter">KIRTIPUR</span></div>
+                        
+                        <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 14</span><div class="text-center font-bold">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 font-light italic text-gray-500">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-gray-500 tracking-tighter">KIRTIPUR</span></div>
+                        
+                        <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 16</span><div class="text-center font-bold">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 font-light italic text-gray-500">vs</span> <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> OMN</div><span class="text-right text-[10px] font-bold text-gray-500 tracking-tighter">KIRTIPUR</span></div>
+                        
+                        <div class="fixture-row"><span class="text-xs font-bold text-gray-500">MAR 18</span><div class="text-center font-bold">OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> <span class="mx-2 font-light italic text-gray-500">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-gray-500 tracking-tighter">KIRTIPUR</span></div>
+                        
+                        <div class="fixture-row border-none"><span class="text-xs font-bold text-gray-500">MAR 20</span><div class="text-center font-bold">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-2 font-light italic text-blue-400">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-[10px] font-bold text-blue-500 tracking-tighter">KIRTIPUR</span></div>
+                    </div>
+                </div>
+
             </div>
-        </section>
+        </div>
+    </section>
 
-    </div>
-
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize Animations
         AOS.init({
-            once: false, // Allows animation to repeat when scrolling back up/down
+            duration: 800,
+            easing: 'ease-in-out',
+            once: false,
             mirror: true
         });
     </script>

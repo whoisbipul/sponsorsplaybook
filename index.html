@@ -39,7 +39,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 100px 5%;
+            padding: 80px 5%;
             overflow: hidden;
         }
 
@@ -155,9 +155,9 @@
         }
 
         .flag-icon {
-            width: 26px;
-            height: 20px;
-            object-fit: contain;
+            width: 24px;
+            height: 18px;
+            object-fit: contain; /* Fix for Nepal Flag */
             display: inline-block;
             margin: 0 auto;
         }
@@ -192,12 +192,12 @@
             <div class="overlay"></div>
         </div>
         <div class="content-relative" data-aos="fade-up">
-            <p class="text-blue-500 font-bold tracking-[0.5em] uppercase text-xs mb-6">Official Digital Broadcasting Partner</p>
+            <p class="text-blue-500 font-bold tracking-[0.4em] uppercase text-xs mb-6">Official Digital Broadcasting Partner</p>
             <h1 class="text-huge font-900 uppercase">ICC CRICKET<br>WORLD CUP<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">LEAGUE 2</span></h1>
             <div class="mt-16 flex flex-wrap gap-12">
                 <div><p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">Competing Nations</p><p class="text-2xl font-light">Nepal • Oman • UAE</p></div>
                 <div class="hidden md:block w-[1px] h-16 bg-white/10"></div>
-                <div><p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">Tournament Window</p><p class="text-2xl font-bold accent-blue">March 10 — 20, 2026</p></div>
+                <div><p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">Tournament Window</p><p class="text-2xl font-bold accent-blue italic">March 10 — 20, 2026</p></div>
             </div>
         </div>
     </section>
@@ -211,11 +211,12 @@
         <div class="content-relative">
             <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
                 <div class="xl:col-span-4 grid grid-cols-1 gap-8">
+                    <!-- Broadcaster Card (Bold DGO, No Italic) -->
                     <div class="animated-card" style="--glow-color: #3B82F6;" data-aos="fade-right">
                         <div class="card-content">
                             <span class="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px]">Strategic Partnership</span>
                             <h2 class="text-2xl font-800 mt-6 leading-tight">Official Exclusive Broadcast Partner</h2>
-                            <h2 class="text-7xl font-900 accent-blue mt-2 tracking-tighter">DGO</h2>
+                            <h2 class="text-7xl font-900 accent-blue mt-2 tracking-tighter uppercase">DGO</h2>
                         </div>
                     </div>
                     <div class="animated-card" style="--glow-color: #22C55E;" data-aos="fade-right" data-aos-delay="200">
@@ -259,42 +260,19 @@
                 <div class="xl:col-span-7 flex flex-col gap-6" data-aos="fade-right">
                     <div class="bento-card">
                         <div class="flex justify-between items-center mb-8">
-                            <h3 class="text-2xl font-900 uppercase italic tracking-tighter">Historical Impact</h3>
-                            <span class="glass-tag accent-blue">Past Performance</span>
+                            <h3 class="text-2xl font-900 uppercase italic tracking-tighter">The Nepal Impact</h3>
+                            <span class="glass-tag accent-blue">Historical Data</span>
                         </div>
                         
                         <div class="space-y-6">
-                            <!-- Data Row 1 -->
-                            <div>
-                                <div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400">
-                                    <span>Nepal vs USA (Peak)</span>
-                                    <span class="text-white text-base">2,738,211 Viewers</span>
-                                </div>
-                                <div class="data-bar-bg"><div class="data-bar-fill bg-blue-600" style="width: 100%;"></div></div>
-                            </div>
-                            <!-- Data Row 2 -->
-                            <div>
-                                <div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400">
-                                    <span>Nepal vs UAE</span>
-                                    <span class="text-white text-base">2,272,065 Viewers</span>
-                                </div>
-                                <div class="data-bar-bg"><div class="data-bar-fill bg-blue-500" style="width: 83%;"></div></div>
-                            </div>
-                            <!-- Data Row 3 -->
-                            <div>
-                                <div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400">
-                                    <span>Nepal vs Netherlands</span>
-                                    <span class="text-white text-base">1,726,804 Viewers</span>
-                                </div>
-                                <div class="data-bar-bg"><div class="data-bar-fill bg-blue-400" style="width: 63%;"></div></div>
-                            </div>
-                            <!-- Neutral Match Comparison -->
+                            <!-- Data Rows -->
+                            <div><div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400"><span>Nepal vs USA (Peak)</span><span class="text-white text-base">2,738,211 Viewers</span></div><div class="data-bar-bg"><div class="data-bar-fill bg-blue-600" style="width: 100%;"></div></div></div>
+                            <div><div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400"><span>Nepal vs UAE</span><span class="text-white text-base">2,272,065 Viewers</span></div><div class="data-bar-bg"><div class="data-bar-fill bg-blue-500" style="width: 83%;"></div></div></div>
+                            <div><div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400"><span>Nepal vs Netherlands</span><span class="text-white text-base">1,726,804 Viewers</span></div><div class="data-bar-bg"><div class="data-bar-fill bg-blue-400" style="width: 63%;"></div></div></div>
+                            
                             <div class="pt-6 mt-6 border-t border-white/10">
                                 <p class="text-[10px] text-gray-500 font-bold uppercase mb-4 tracking-widest">Neutral Match Baseline (Non-Nepal)</p>
-                                <div class="flex justify-between text-xs font-bold uppercase text-gray-600">
-                                    <span>USA vs UAE Match</span>
-                                    <span>434,337 Viewers</span>
-                                </div>
+                                <div class="flex justify-between text-xs font-bold uppercase text-gray-600"><span>USA vs UAE Match</span><span>434,337 Viewers</span></div>
                                 <div class="data-bar-bg"><div class="data-bar-fill bg-gray-600" style="width: 16%;"></div></div>
                             </div>
                         </div>
@@ -305,37 +283,20 @@
                 <div class="xl:col-span-5 flex flex-col gap-6" data-aos="fade-left">
                     <div class="bento-card border-l-4 border-blue-500">
                         <span class="glass-tag accent-blue mb-4 inline-block">Iconic Series Moments</span>
-                        <h4 class="text-xl font-900 uppercase mb-2">The Historic Chase</h4>
+                        <h4 class="text-xl font-900 uppercase mb-2">The Miracle at Kirtipur</h4>
                         <p class="text-xs text-blue-400 font-bold tracking-widest uppercase mb-4">Nepal vs UAE | March 2023</p>
-                        <p class="text-sm text-gray-400 leading-relaxed">
-                            A legendary stand at TU Ground where Nepal defeated UAE via DLS to qualify for the Cricket World Cup Qualifiers in Zimbabwe. A match that shook the nation.
+                        <p class="text-sm text-gray-400 leading-relaxed italic">
+                            Chasing a massive 311, Nepal defied the odds and fading light to clinch a DLS thriller, securing direct World Cup Qualifier entry amidst a record-breaking sea of 20,000 roaring fans at the TU Ground.
                         </p>
                     </div>
 
                     <div class="bento-card border-l-4 border-green-500">
-                        <h4 class="text-xl font-900 uppercase mb-2">The Away Triumph</h4>
+                        <h4 class="text-xl font-900 uppercase mb-2">The 1-Wicket Wide Escape</h4>
                         <p class="text-xs text-green-400 font-bold tracking-widest uppercase mb-4">Scotland vs Nepal | Oct 2024</p>
-                        <p class="text-sm text-gray-400 leading-relaxed">
-                            A masterful performance on foreign soil, proving Nepal's dominance away from home by chasing down Scotland's total in a thriller.
+                        <p class="text-sm text-gray-400 leading-relaxed italic">
+                            1 needed off 1 ball with 1 wicket left. As a frantic run-out unfolded at the striker's end, the stadium held its breath until the umpire’s wide signal for a leg-side delivery sparked a historic 1-wicket victory against the champions.
                         </p>
                     </div>
-                </div>
-                
-            </div>
-            
-            <!-- Bottom Metric Banner -->
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up">
-                <div class="bento-card py-6 flex items-center justify-center gap-4">
-                    <h5 class="text-4xl font-900 accent-blue">527%</h5>
-                    <p class="text-[10px] font-bold text-gray-400 uppercase leading-tight">Increase in viewership<br>for Nepal matches</p>
-                </div>
-                <div class="bento-card py-6 flex items-center justify-center gap-4">
-                    <h5 class="text-4xl font-900 accent-green">10M+</h5>
-                    <p class="text-[10px] font-bold text-gray-400 uppercase leading-tight">Total Estimated Digital<br>Impressions</p>
-                </div>
-                <div class="bento-card py-6 flex items-center justify-center gap-4">
-                    <h5 class="text-4xl font-900 accent-blue">1.2M+</h5>
-                    <p class="text-[10px] font-bold text-gray-400 uppercase leading-tight">Average Unique<br>Viewers per Game</p>
                 </div>
             </div>
         </div>

@@ -21,16 +21,10 @@
             overflow-x: hidden;
         }
 
-        /* --- Animations --- */
-        @keyframes kenBurns {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.15); }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        /* --- Global Animations --- */
+        @keyframes kenBurns { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulse-blue { 0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); } 50% { box-shadow: 0 0 20px 5px rgba(59, 130, 246, 0.2); } }
 
         .page-wrapper {
             position: relative;
@@ -43,38 +37,12 @@
             overflow: hidden;
         }
 
-        .bg-container {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1;
-        }
+        .bg-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .bg-layer { width: 100%; height: 100%; background-size: cover; background-position: center; animation: kenBurns 20s ease-in-out infinite alternate; }
+        .overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.98) 100%); }
+        .content-relative { position: relative; z-index: 10; width: 100%; max-width: 1400px; margin: 0 auto; }
 
-        .bg-layer {
-            width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            animation: kenBurns 20s ease-in-out infinite alternate;
-        }
-
-        .overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            background: linear-gradient(to bottom, 
-                rgba(0,0,0,0.85) 0%, 
-                rgba(0,0,0,0.7) 50%, 
-                rgba(0,0,0,0.98) 100%);
-        }
-
-        .content-relative {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* --- Bento Cards --- */
+        /* --- Premium Bento Cards --- */
         .animated-card {
             position: relative;
             background: #0a0a0a;
@@ -85,70 +53,43 @@
             padding: 3rem;
             height: 100%;
         }
-
         .animated-card::before {
             content: '';
             position: absolute;
-            height: 250%;
-            width: 250%;
-            top: -75%;
-            left: -75%;
+            height: 250%; width: 250%; top: -75%; left: -75%;
             background-image: conic-gradient(transparent, var(--glow-color), transparent 40%);
             animation: rotate 6s linear infinite;
             z-index: 0;
         }
-
         .animated-card::after {
             content: '';
-            position: absolute;
-            inset: 1.5px;
+            position: absolute; inset: 1.5px;
             background: rgba(12, 12, 12, 0.98);
             backdrop-filter: blur(40px);
             border-radius: 39px;
             z-index: 1;
         }
-
-        .card-content {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-        }
+        .card-content { position: relative; z-index: 10; width: 100%; }
 
         .bento-card {
-            background: rgba(12, 12, 12, 0.75);
+            background: rgba(15, 15, 15, 0.75);
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(40px);
             border-radius: 40px;
             padding: 2.5rem;
-            height: 100%;
+            transition: all 0.3s ease;
         }
+        .bento-card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-5px); }
 
-        /* --- Data Viz Components --- */
-        .data-bar-bg {
-            background: rgba(255, 255, 255, 0.05);
-            height: 12px;
-            border-radius: 10px;
-            width: 100%;
-            margin-top: 8px;
-            overflow: hidden;
-        }
-        .data-bar-fill {
-            height: 100%;
-            border-radius: 10px;
-            transition: width 2s cubic-bezier(0.1, 0, 0, 1);
-            width: 0;
-        }
-
-        /* --- Custom Styles for Page 4 --- */
-        .deliverable-item {
+        /* Deliverable Tile Styling */
+        .deliverable-tile {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 1.5rem;
             display: flex;
-            align-items: start;
+            flex-direction: column;
             gap: 12px;
-            margin-bottom: 16px;
-        }
-        .check-icon {
-            color: #3B82F6;
-            margin-top: 4px;
         }
 
         /* --- Typography & UI --- */
@@ -159,16 +100,17 @@
         .accent-blue { color: #3B82F6; }
         .accent-green { color: #22C55E; }
         .glass-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 100px; font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; }
+        
+        /* Data Bars */
+        .data-bar-bg { background: rgba(255, 255, 255, 0.05); height: 12px; border-radius: 10px; width: 100%; margin-top: 8px; overflow: hidden; }
+        .data-bar-fill { height: 100%; border-radius: 10px; transition: width 2s cubic-bezier(0.1, 0, 0, 1); width: 0; }
     </style>
 </head>
 <body>
 
     <!-- PAGE 1: HERO -->
     <section class="page-wrapper">
-        <div class="bg-container">
-            <div class="bg-layer" style="background-image: url('assets/league2.png');"></div>
-            <div class="overlay"></div>
-        </div>
+        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/league2.png');"></div><div class="overlay"></div></div>
         <div class="content-relative" data-aos="fade-up">
             <p class="text-blue-500 font-bold tracking-[0.5em] uppercase text-xs mb-6">Official Digital Broadcasting Partner</p>
             <h1 class="text-huge font-900 uppercase">ICC CRICKET<br>WORLD CUP<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">LEAGUE 2</span></h1>
@@ -182,10 +124,7 @@
 
     <!-- PAGE 2: EVENT OVERVIEW -->
     <section class="page-wrapper">
-        <div class="bg-container">
-            <div class="bg-layer" style="background-image: url('assets/page2.png');"></div>
-            <div class="overlay"></div>
-        </div>
+        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page2.png');"></div><div class="overlay"></div></div>
         <div class="content-relative">
             <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
                 <div class="xl:col-span-4 grid grid-cols-1 gap-8">
@@ -225,10 +164,7 @@
 
     <!-- PAGE 3: VIEWERSHIP DATA -->
     <section id="viewership-section" class="page-wrapper">
-        <div class="bg-container">
-            <div class="bg-layer" style="background-image: url('assets/page3.png');"></div>
-            <div class="overlay"></div>
-        </div>
+        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page3.png');"></div><div class="overlay"></div></div>
         <div class="content-relative">
             <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
                 <div class="xl:col-span-7 flex flex-col gap-6" data-aos="fade-right">
@@ -242,7 +178,7 @@
                             <div><div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400"><span>Nepal vs UAE</span><span class="text-white text-base"><span class="counter" data-target="2272065">0</span> Viewers</span></div><div class="data-bar-bg"><div class="data-bar-fill bg-blue-500" data-width="83%"></div></div></div>
                             <div><div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400"><span>Nepal vs Netherlands</span><span class="text-white text-base"><span class="counter" data-target="1726804">0</span> Viewers</span></div><div class="data-bar-bg"><div class="data-bar-fill bg-blue-400" data-width="63%"></div></div></div>
                             <div class="pt-6 mt-6 border-t border-white/10">
-                                <p class="text-[10px] text-gray-500 font-bold uppercase mb-4 tracking-widest">Neutral Match Baseline (Non-Nepal)</p>
+                                <p class="text-[10px] text-gray-500 font-bold uppercase mb-4 tracking-widest">Neutral Match Baseline</p>
                                 <div class="flex justify-between text-xs font-bold uppercase text-gray-600"><span>USA vs UAE Match</span><span><span class="counter" data-target="434337">0</span> Viewers</span></div>
                                 <div class="data-bar-bg"><div class="data-bar-fill bg-gray-600" data-width="16%"></div></div>
                             </div>
@@ -250,92 +186,93 @@
                     </div>
                 </div>
                 <div class="xl:col-span-5 flex flex-col gap-6" data-aos="fade-left">
-                    <div class="bento-card border-l-4 border-blue-500"><span class="glass-tag accent-blue mb-4 inline-block">Iconic Series Moments</span><h4 class="text-xl font-900 uppercase mb-2">The Miracle at Kirtipur</h4><p class="text-sm text-gray-400 italic">Chasing a massive 311, Nepal clinched a DLS thriller to qualify for the World Cup Qualifiers in 2023.</p></div>
-                    <div class="bento-card border-l-4 border-green-500"><h4 class="text-xl font-900 uppercase mb-2">The 1-Wicket Wide Escape</h4><p class="text-sm text-gray-400 italic">Nepal defeated champions Scotland in Oct 2024 through a dramatic wide ball on the final delivery.</p></div>
+                    <div class="bento-card border-l-4 border-blue-500"><span class="glass-tag accent-blue mb-4 inline-block">Iconic Series Moments</span><h4 class="text-xl font-900 uppercase mb-2">The Miracle at Kirtipur</h4><p class="text-sm text-gray-400 italic">Chasing 311, Nepal clinched a DLS thriller to qualify for the World Cup Qualifiers in 2023.</p></div>
+                    <div class="bento-card border-l-4 border-green-500"><h4 class="text-xl font-900 uppercase mb-2">The 1-Wicket Wide Escape</h4><p class="text-sm text-gray-400 italic">Nepal defeated Scotland in Oct 2024 through a dramatic wide ball on the final delivery.</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PAGE 4: SPONSORSHIP DELIVERABLES -->
+    <!-- PAGE 4: TITLE SPONSOR DELIVERABLES -->
     <section class="page-wrapper">
-        <div class="bg-container">
-            <div class="bg-layer" style="background-image: url('assets/page4.png');"></div>
-            <div class="overlay"></div>
-        </div>
-
+        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page4.png');"></div><div class="overlay"></div></div>
+        
         <div class="content-relative">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <div class="flex flex-col gap-10">
                 
-                <!-- Main Tier Card (Hero) -->
-                <div class="lg:col-span-5" data-aos="fade-right">
-                    <div class="animated-card" style="--glow-color: #FFD700;"> <!-- Gold Glow for Title Partner -->
-                        <div class="card-content">
-                            <span class="text-yellow-500 font-bold uppercase tracking-[0.4em] text-[10px]">Tier 1 Opportunity</span>
-                            <h2 class="text-4xl font-900 mt-6 leading-tight uppercase">Title Partner</h2>
-                            <p class="text-gray-400 text-sm mt-6 mb-10 leading-relaxed">
-                                Establish your brand as the definitive face of the series. The Title Partner enjoys the highest visibility across all DGO digital touchpoints.
-                            </p>
-                            
-                            <div class="space-y-4">
-                                <div class="deliverable-item">
-                                    <svg class="check-icon w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 111.414-1.414L9 10.586l3.293-3.293a1 1 0 011.414 1.414z"></path></svg>
-                                    <p class="text-sm font-semibold italic text-white">Full Series Naming Rights ("Brand Name" CWC League II)</p>
-                                </div>
-                                <div class="deliverable-item">
-                                    <svg class="check-icon w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 111.414-1.414L9 10.586l3.293-3.293a1 1 0 011.414 1.414z"></path></svg>
-                                    <p class="text-sm font-semibold italic text-white">100% Share of Voice on Match Day countdowns</p>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Title Header -->
+                <div class="flex flex-col md:flex-row justify-between items-end gap-6" data-aos="fade-down">
+                    <div class="max-w-2xl">
+                        <span class="glass-tag accent-blue mb-4 inline-block">Partnership Tiers</span>
+                        <h2 class="text-5xl md:text-7xl font-900 uppercase leading-none">Title <span class="accent-blue">Sponsor</span></h2>
+                        <p class="text-gray-400 mt-6 text-lg italic">The ultimate brand integration. Become the identity of the tri-series across millions of digital screens.</p>
+                    </div>
+                    <div class="bento-card py-6 px-10 border-blue-500/50">
+                        <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500 mb-2">Series Title</p>
+                        <p class="text-2xl font-900 italic">[Your Brand] CWC League II</p>
                     </div>
                 </div>
 
-                <!-- Secondary Deliverables Grid -->
-                <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-left">
+                <!-- Deliverables Bento Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     
-                    <!-- Live Broadcast Integration -->
-                    <div class="bento-card border-t-2 border-blue-500">
-                        <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-4">Live Stream Visibility</h4>
-                        <ul class="text-xs space-y-3 text-gray-300">
-                            <li>• Animated Logo on the **Score Bug** (Permanent)</li>
-                            <li>• "Brought to you by" **L-Band** during over changes</li>
-                            <li>• Sponsor logo on **Wicket & Bounday** replays</li>
-                            <li>• **QR Code** integration for direct viewer conversion</li>
-                        </ul>
+                    <!-- Card 1: Live Stream Tech -->
+                    <div class="bento-card flex flex-col gap-8" data-aos="fade-up">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-blue-600/20 rounded-2xl flex items-center justify-center text-blue-400">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-800 uppercase">Live Broadcast</h4>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="deliverable-tile">
+                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Permanent Score Bug Logo</p>
+                                <p class="text-[10px] text-gray-400">Your logo fixed on the live score bug for 100% of the broadcast duration.</p>
+                            </div>
+                            <div class="deliverable-tile">
+                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Virtual On-Field Graphics</p>
+                                <p class="text-[10px] text-gray-400">Digital carpet branding behind the wickets and on the boundary ropes.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Digital Ad Inventory -->
-                    <div class="bento-card border-t-2 border-green-500">
-                        <h4 class="text-green-500 font-bold uppercase tracking-widest text-[10px] mb-4">Commercial Inventory</h4>
-                        <ul class="text-xs space-y-3 text-gray-300">
-                            <li>• Exclusive **Pre-Roll** video before match start</li>
-                            <li>• Unskippable **Mid-Roll** ads during innings break</li>
-                            <li>• **Full-Page Banners** on the DGO Match Center</li>
-                            <li>• Custom **"Commercial Break"** branded slates</li>
-                        </ul>
+                    <!-- Card 2: Digital Real Estate -->
+                    <div class="bento-card flex flex-col gap-8" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-green-600/20 rounded-2xl flex items-center justify-center text-green-400">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-800 uppercase">Ad Inventory</h4>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="deliverable-tile">
+                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Pre-Roll & Mid-Rolls</p>
+                                <p class="text-[10px] text-gray-400">Exclusive 15s unskippable video slots during peak match moments.</p>
+                            </div>
+                            <div class="deliverable-tile">
+                                <p class="text-xs font-bold text-white uppercase tracking-tighter">L-Band Overlays</p>
+                                <p class="text-[10px] text-gray-400">Interactive ad banners appearing at the start of every over.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Post-Match & Social -->
-                    <div class="bento-card border-t-2 border-white/20">
-                        <h4 class="text-gray-400 font-bold uppercase tracking-widest text-[10px] mb-4">Engagement & Social</h4>
-                        <ul class="text-xs space-y-3 text-gray-300">
-                            <li>• Title branding on all **Match Highlights** (YouTube/App)</li>
-                            <li>• Branded **"Player of the Match"** fan voting poll</li>
-                            <li>• Strategic **Push Notifications** (Match Start/Wickets)</li>
-                            <li>• Social Media shoutouts across all DGO handles</li>
-                        </ul>
-                    </div>
-
-                    <!-- Tech & Innovation -->
-                    <div class="bento-card bg-gradient-to-br from-blue-900/20 to-transparent">
-                        <h4 class="text-blue-300 font-bold uppercase tracking-widest text-[10px] mb-4">The DGO Edge</h4>
-                        <p class="text-[10px] text-gray-400 leading-relaxed uppercase">
-                            Your brand integrated into a low-latency 4K environment. We don't just show ads; we build your brand into the story of the game.
-                        </p>
-                        <div class="mt-4 flex items-center gap-2">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                            <span class="text-[9px] font-bold">LIVE INTERACTIVE AD UNITS</span>
+                    <!-- Card 3: Social & Highlights -->
+                    <div class="bento-card flex flex-col gap-8" data-aos="fade-up" data-aos-delay="400">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-purple-600/20 rounded-2xl flex items-center justify-center text-purple-400">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-800 uppercase">Engagement</h4>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="deliverable-tile">
+                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Branded Highlights</p>
+                                <p class="text-[10px] text-gray-400">Sponsor branding on all "Wicket" and "Boundary" social clips.</p>
+                            </div>
+                            <div class="deliverable-tile">
+                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Player of the Match</p>
+                                <p class="text-[10px] text-gray-400">Fan voting poll integrated within the DGO app ecosystem.</p>
+                            </div>
                         </div>
                     </div>
 
@@ -349,7 +286,6 @@
     <script>
         AOS.init({ duration: 1000, once: false, mirror: true });
 
-        // Logic for Rolling Numbers and Bar Growth
         const viewershipSection = document.getElementById('viewership-section');
         const counters = document.querySelectorAll('.counter');
         const bars = document.querySelectorAll('.data-bar-fill');

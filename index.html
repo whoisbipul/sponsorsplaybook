@@ -13,29 +13,13 @@
     <style>
         /* Global Styles */
         html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: #000; 
-            color: #ffffff;
-            margin: 0;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Montserrat', sans-serif; background-color: #000; color: #ffffff; margin: 0; overflow-x: hidden; }
 
         /* --- Global Animations --- */
         @keyframes kenBurns { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        .page-wrapper {
-            position: relative;
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 80px 5%;
-            overflow: hidden;
-        }
-
+        .page-wrapper { position: relative; min-height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; padding: 80px 5%; overflow: hidden; }
         .bg-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .bg-layer { width: 100%; height: 100%; background-size: cover; background-position: center; animation: kenBurns 20s ease-in-out infinite alternate; }
         .overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.98) 100%); }
@@ -43,61 +27,30 @@
 
         /* --- Premium Bento Cards --- */
         .animated-card {
-            position: relative;
-            background: #0a0a0a;
-            border-radius: 40px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            padding: 3rem;
-            height: 100%;
+            position: relative; background: #0a0a0a; border-radius: 40px; overflow: hidden; display: flex; flex-direction: column; padding: 3rem; height: 100%;
         }
         .animated-card::before {
-            content: '';
-            position: absolute;
-            height: 250%; width: 250%; top: -75%; left: -75%;
+            content: ''; position: absolute; height: 250%; width: 250%; top: -75%; left: -75%;
             background-image: conic-gradient(transparent, var(--glow-color), transparent 40%);
-            animation: rotate 6s linear infinite;
-            z-index: 0;
+            animation: rotate 6s linear infinite; z-index: 0;
         }
         .animated-card::after {
-            content: '';
-            position: absolute; inset: 1.5px;
-            background: rgba(12, 12, 12, 0.98);
-            backdrop-filter: blur(40px);
-            border-radius: 39px;
-            z-index: 1;
+            content: ''; position: absolute; inset: 1.5px; background: rgba(12, 12, 12, 0.98); backdrop-filter: blur(40px); border-radius: 39px; z-index: 1;
         }
         .card-content { position: relative; z-index: 10; width: 100%; }
 
-        .bento-card {
-            background: rgba(12, 12, 12, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(40px);
-            border-radius: 40px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-        }
+        .bento-card { background: rgba(12, 12, 12, 0.75); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(40px); border-radius: 40px; padding: 2.5rem; transition: all 0.3s ease; }
 
         .deliverable-tile {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 1.2rem; display: flex; flex-direction: column; gap: 8px;
         }
 
-        /* --- Fixture Table --- */
+        /* --- UI Elements --- */
+        .text-huge { font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.85; letter-spacing: -0.04em; }
         .fixture-row { display: grid; grid-template-columns: 100px 1fr 100px; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .matchup-grid { display: grid; grid-template-columns: 1fr 40px 50px 40px 1fr; align-items: center; text-align: center; }
         .flag-icon { width: 24px; height: 18px; object-fit: contain; display: inline-block; margin: 0 auto; }
-
-        /* --- Typography & UI --- */
-        .text-huge { font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.85; letter-spacing: -0.04em; }
         .accent-blue { color: #3B82F6; }
-        .accent-green { color: #22C55E; }
         .glass-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 100px; font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; }
         
         /* Data Bars */
@@ -192,85 +145,82 @@
         </div>
     </section>
 
-    <!-- PAGE 4: TITLE SPONSOR DELIVERABLES -->
+    <!-- PAGE 4: SPONSOR DELIVERABLES -->
     <section class="page-wrapper">
         <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page4.png');"></div><div class="overlay"></div></div>
-        
         <div class="content-relative">
             <div class="flex flex-col gap-10">
-                
-                <!-- Title Header -->
+                <!-- Header -->
                 <div class="flex flex-col md:flex-row justify-between items-end gap-6" data-aos="fade-down">
                     <div class="max-w-2xl">
-                        <span class="glass-tag accent-blue mb-4 inline-block">Partnership Tiers</span>
+                        <span class="glass-tag accent-blue mb-4 inline-block">Exclusive Tier</span>
                         <h2 class="text-5xl md:text-7xl font-900 uppercase leading-none">Title <span class="accent-blue">Sponsor</span></h2>
-                        <p class="text-gray-400 mt-6 text-lg italic">Become the definitive face of the series across millions of digital screens.</p>
                     </div>
                     <div class="bento-card py-6 px-10 border-blue-500/50">
                         <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500 mb-2">Series Title</p>
-                        <p class="text-xl font-800 text-white">[Your Brand] ICC CWC League 2 - Nepal, Oman, UAE</p>
+                        <p class="text-xl font-800 text-white uppercase">[Your Brand] ICC CWC League 2 - Nepal, Oman, UAE</p>
                     </div>
                 </div>
 
-                <!-- Deliverables Bento Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Grid of Deliverables -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                     
-                    <!-- Card 1: Live Stream Visibility -->
-                    <div class="bento-card flex flex-col gap-8" data-aos="fade-up">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-blue-600/20 rounded-2xl flex items-center justify-center text-blue-400">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                            </div>
-                            <h4 class="text-xl font-800 uppercase">Live Broadcast</h4>
-                        </div>
-                        <div class="grid grid-cols-1 gap-4">
+                    <!-- Broadcaster/Production (Hear it) -->
+                    <div class="bento-card col-span-1" data-aos="fade-up">
+                        <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-4">Production Integration</h4>
+                        <div class="space-y-4">
                             <div class="deliverable-tile">
-                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Permanent Score Bug Logo</p>
-                                <p class="text-[10px] text-gray-400">Exclusive branding fixed on the live score bug for 100% of the series duration.</p>
+                                <p class="text-xs font-bold text-white uppercase">Commentary Mentions</p>
+                                <p class="text-[10px] text-gray-400">Verbal "Presented by" mentions at the start, mid-break, and end of every innings.</p>
                             </div>
                             <div class="deliverable-tile">
-                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Series Naming Rights</p>
-                                <p class="text-[10px] text-gray-500">100% Share of Voice on all match-day countdowns and series identifiers.</p>
+                                <p class="text-xs font-bold text-white uppercase">Score Bug Logo</p>
+                                <p class="text-[10px] text-gray-400">Fixed logo on the live match score-bug throughout the 50-over broadcast.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card 2: Digital Inventory -->
-                    <div class="bento-card flex flex-col gap-8" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-green-600/20 rounded-2xl flex items-center justify-center text-green-400">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                            </div>
-                            <h4 class="text-xl font-800 uppercase">Ad Inventory</h4>
-                        </div>
-                        <div class="grid grid-cols-1 gap-4">
+                    <!-- Visual Assets (See it) -->
+                    <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="text-green-500 font-bold uppercase tracking-widest text-[10px] mb-4">Visual Identity</h4>
+                        <div class="space-y-4">
                             <div class="deliverable-tile">
-                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Pre-Roll & Mid-Rolls</p>
-                                <p class="text-[10px] text-gray-400">Exclusive 15s unskippable video slots during peak match moments.</p>
+                                <p class="text-xs font-bold text-white uppercase">Milestone Graphics</p>
+                                <p class="text-[10px] text-gray-400">Branded "Animated Overlays" triggered for every 4, 6, and Wicket moment.</p>
                             </div>
                             <div class="deliverable-tile">
-                                <p class="text-xs font-bold text-white uppercase tracking-tighter">L-Band Overlays</p>
-                                <p class="text-[10px] text-gray-400">Interactive ad banners appearing at the start of every over.</p>
+                                <p class="text-xs font-bold text-white uppercase">L-Band Overlays</p>
+                                <p class="text-[10px] text-gray-400">Prominent lower-third banners appearing during every over transition.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card 3: Highlights & Social -->
-                    <div class="bento-card flex flex-col gap-8" data-aos="fade-up" data-aos-delay="400">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-purple-600/20 rounded-2xl flex items-center justify-center text-purple-400">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                    <!-- Digital Ecosystem (Interact) -->
+                    <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="text-purple-500 font-bold uppercase tracking-widest text-[10px] mb-4">DGO App Ecosystem</h4>
+                        <div class="space-y-4">
+                            <div class="deliverable-tile">
+                                <p class="text-xs font-bold text-white uppercase">App Home Takeover</p>
+                                <p class="text-[10px] text-gray-400">The DGO homepage themed in your brand's colors for the series duration.</p>
                             </div>
-                            <h4 class="text-xl font-800 uppercase">Engagement</h4>
+                            <div class="deliverable-tile">
+                                <p class="text-xs font-bold text-white uppercase">Match Predictor</p>
+                                <p class="text-[10px] text-gray-400">"Powered by [Brand]" interactive fan predictor to drive lead generation.</p>
+                            </div>
                         </div>
-                        <div class="grid grid-cols-1 gap-4">
+                    </div>
+
+                    <!-- Post-Match (Relive) -->
+                    <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="300">
+                        <h4 class="text-gray-400 font-bold uppercase tracking-widest text-[10px] mb-4">Post-Match & Social</h4>
+                        <div class="space-y-4">
                             <div class="deliverable-tile">
-                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Branded Highlights</p>
-                                <p class="text-[10px] text-gray-400">Title branding on all "Wicket" and "Boundary" social clips.</p>
+                                <p class="text-xs font-bold text-white uppercase">Branded Highlights</p>
+                                <p class="text-[10px] text-gray-400">Full sponsorship of YouTube and in-app highlights for every match.</p>
                             </div>
                             <div class="deliverable-tile">
-                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Player of the Match</p>
-                                <p class="text-[10px] text-gray-400">Branded fan voting poll integrated within the DGO ecosystem.</p>
+                                <p class="text-xs font-bold text-white uppercase">Push Notifications</p>
+                                <p class="text-[10px] text-gray-400">Sponsor-branded match start and wicket alerts sent to 1M+ users.</p>
                             </div>
                         </div>
                     </div>
@@ -284,12 +234,10 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: false, mirror: true });
-
         const viewershipSection = document.getElementById('viewership-section');
         const counters = document.querySelectorAll('.counter');
         const bars = document.querySelectorAll('.data-bar-fill');
         let animated = false;
-
         const animateData = () => {
             if (animated) return;
             bars.forEach(bar => { bar.style.width = bar.getAttribute('data-width'); });
@@ -309,11 +257,7 @@
             });
             animated = true;
         };
-
-        const observer = new IntersectionObserver((entries) => {
-            if(entries[0].isIntersecting) { animateData(); }
-        }, { threshold: 0.3 });
-
+        const observer = new IntersectionObserver((entries) => { if(entries[0].isIntersecting) { animateData(); } }, { threshold: 0.3 });
         observer.observe(viewershipSection);
     </script>
 </body>

@@ -24,7 +24,6 @@
         /* --- Global Animations --- */
         @keyframes kenBurns { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes pulse-blue { 0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); } 50% { box-shadow: 0 0 20px 5px rgba(59, 130, 246, 0.2); } }
 
         .page-wrapper {
             position: relative;
@@ -72,16 +71,14 @@
         .card-content { position: relative; z-index: 10; width: 100%; }
 
         .bento-card {
-            background: rgba(15, 15, 15, 0.75);
+            background: rgba(12, 12, 12, 0.75);
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(40px);
             border-radius: 40px;
             padding: 2.5rem;
             transition: all 0.3s ease;
         }
-        .bento-card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-5px); }
 
-        /* Deliverable Tile Styling */
         .deliverable-tile {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.05);
@@ -92,11 +89,13 @@
             gap: 12px;
         }
 
-        /* --- Typography & UI --- */
-        .text-huge { font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.85; letter-spacing: -0.04em; }
+        /* --- Fixture Table --- */
         .fixture-row { display: grid; grid-template-columns: 100px 1fr 100px; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .matchup-grid { display: grid; grid-template-columns: 1fr 40px 50px 40px 1fr; align-items: center; text-align: center; }
         .flag-icon { width: 24px; height: 18px; object-fit: contain; display: inline-block; margin: 0 auto; }
+
+        /* --- Typography & UI --- */
+        .text-huge { font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.85; letter-spacing: -0.04em; }
         .accent-blue { color: #3B82F6; }
         .accent-green { color: #22C55E; }
         .glass-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 100px; font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; }
@@ -205,18 +204,18 @@
                     <div class="max-w-2xl">
                         <span class="glass-tag accent-blue mb-4 inline-block">Partnership Tiers</span>
                         <h2 class="text-5xl md:text-7xl font-900 uppercase leading-none">Title <span class="accent-blue">Sponsor</span></h2>
-                        <p class="text-gray-400 mt-6 text-lg italic">The ultimate brand integration. Become the identity of the tri-series across millions of digital screens.</p>
+                        <p class="text-gray-400 mt-6 text-lg italic">Become the definitive face of the series across millions of digital screens.</p>
                     </div>
                     <div class="bento-card py-6 px-10 border-blue-500/50">
                         <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500 mb-2">Series Title</p>
-                        <p class="text-2xl font-900 italic">[Your Brand] CWC League II</p>
+                        <p class="text-xl font-800 text-white">[Your Brand] ICC CWC League 2 - Nepal, Oman, UAE</p>
                     </div>
                 </div>
 
                 <!-- Deliverables Bento Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     
-                    <!-- Card 1: Live Stream Tech -->
+                    <!-- Card 1: Live Stream Visibility -->
                     <div class="bento-card flex flex-col gap-8" data-aos="fade-up">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-blue-600/20 rounded-2xl flex items-center justify-center text-blue-400">
@@ -227,16 +226,16 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div class="deliverable-tile">
                                 <p class="text-xs font-bold text-white uppercase tracking-tighter">Permanent Score Bug Logo</p>
-                                <p class="text-[10px] text-gray-400">Your logo fixed on the live score bug for 100% of the broadcast duration.</p>
+                                <p class="text-[10px] text-gray-400">Exclusive branding fixed on the live score bug for 100% of the series duration.</p>
                             </div>
                             <div class="deliverable-tile">
-                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Virtual On-Field Graphics</p>
-                                <p class="text-[10px] text-gray-400">Digital carpet branding behind the wickets and on the boundary ropes.</p>
+                                <p class="text-xs font-bold text-white uppercase tracking-tighter">Series Naming Rights</p>
+                                <p class="text-[10px] text-gray-500">100% Share of Voice on all match-day countdowns and series identifiers.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card 2: Digital Real Estate -->
+                    <!-- Card 2: Digital Inventory -->
                     <div class="bento-card flex flex-col gap-8" data-aos="fade-up" data-aos-delay="200">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-green-600/20 rounded-2xl flex items-center justify-center text-green-400">
@@ -256,7 +255,7 @@
                         </div>
                     </div>
 
-                    <!-- Card 3: Social & Highlights -->
+                    <!-- Card 3: Highlights & Social -->
                     <div class="bento-card flex flex-col gap-8" data-aos="fade-up" data-aos-delay="400">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-purple-600/20 rounded-2xl flex items-center justify-center text-purple-400">
@@ -267,11 +266,11 @@
                         <div class="grid grid-cols-1 gap-4">
                             <div class="deliverable-tile">
                                 <p class="text-xs font-bold text-white uppercase tracking-tighter">Branded Highlights</p>
-                                <p class="text-[10px] text-gray-400">Sponsor branding on all "Wicket" and "Boundary" social clips.</p>
+                                <p class="text-[10px] text-gray-400">Title branding on all "Wicket" and "Boundary" social clips.</p>
                             </div>
                             <div class="deliverable-tile">
                                 <p class="text-xs font-bold text-white uppercase tracking-tighter">Player of the Match</p>
-                                <p class="text-[10px] text-gray-400">Fan voting poll integrated within the DGO app ecosystem.</p>
+                                <p class="text-[10px] text-gray-400">Branded fan voting poll integrated within the DGO ecosystem.</p>
                             </div>
                         </div>
                     </div>

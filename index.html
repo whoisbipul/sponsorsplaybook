@@ -21,19 +21,17 @@
             overflow-x: hidden;
         }
 
-        /* --- Ken Burns Background Animation --- */
+        /* --- Animations --- */
         @keyframes kenBurns {
             0% { transform: scale(1); }
-            100% { transform: scale(1.15); }
+            100% { transform: scale(1.1); }
         }
 
-        /* --- Rotating Border Animation --- */
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
-        /* Page Layout */
         .page-wrapper {
             position: relative;
             min-height: 100vh;
@@ -41,7 +39,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 100px 5%;
+            padding: 80px 5%;
             overflow: hidden;
         }
 
@@ -58,22 +56,21 @@
             animation: kenBurns 20s ease-in-out infinite alternate;
         }
 
-        /* Heavy Overlay for readability and blending */
         .overlay {
             position: absolute;
             inset: 0;
             z-index: 2;
             background: linear-gradient(to bottom, 
                 rgba(0,0,0,0.85) 0%, 
-                rgba(0,0,0,0.6) 40%, 
-                rgba(0,0,0,0.95) 100%);
+                rgba(0,0,0,0.7) 50%, 
+                rgba(0,0,0,0.98) 100%);
         }
 
         .content-relative {
             position: relative;
             z-index: 10;
             width: 100%;
-            max-width: 1500px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -96,18 +93,18 @@
             width: 250%;
             top: -75%;
             left: -75%;
-            background-image: conic-gradient(transparent, var(--glow-color), transparent 30%);
-            animation: rotate 4s linear infinite;
+            background-image: conic-gradient(transparent, var(--glow-color), transparent 40%);
+            animation: rotate 6s linear infinite;
             z-index: 0;
         }
 
         .animated-card::after {
             content: '';
             position: absolute;
-            inset: 2px;
-            background: rgba(15, 15, 15, 0.95);
+            inset: 1.5px;
+            background: rgba(12, 12, 12, 0.98);
             backdrop-filter: blur(40px);
-            border-radius: 38px;
+            border-radius: 39px;
             z-index: 1;
         }
 
@@ -117,47 +114,48 @@
             width: 100%;
         }
 
-        /* Standard Bento Card */
         .bento-card {
-            background: rgba(15, 15, 15, 0.7);
+            background: rgba(12, 12, 12, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(40px);
             border-radius: 40px;
             padding: 3rem;
         }
 
-        /* Typography & Components */
-        .text-huge {
-            font-size: clamp(3rem, 10vw, 8.5rem);
-            line-height: 0.85;
-            letter-spacing: -0.04em;
-        }
-
+        /* --- Fixture Table Alignment Logic --- */
         .fixture-row {
             display: grid;
-            grid-template-columns: 90px 1fr 100px;
+            /* Column 1: Date | Column 2: Matchup Grid | Column 3: Time */
+            grid-template-columns: 100px 1fr 100px;
             align-items: center;
             padding: 1.25rem 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
+        .matchup-grid {
+            display: grid;
+            /* Team1-Name | Team1-Flag | VS | Team2-Flag | Team2-Name */
+            grid-template-columns: 1fr 40px 50px 40px 1fr;
+            align-items: center;
+            text-align: center;
+        }
+
         .flag-icon {
-            width: 28px;
-            height: 18px;
-            object-fit: cover;
-            border-radius: 2px;
+            width: 24px;
+            height: 20px;
+            object-fit: contain; /* Prevents cropping of Nepal flag */
             display: inline-block;
-            margin: 0 10px;
-            vertical-align: middle;
+            margin: 0 auto;
         }
 
         .accent-blue { color: #3B82F6; }
         .accent-green { color: #22C55E; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #3B82F6; border-radius: 10px; }
+        .text-huge {
+            font-size: clamp(3rem, 10vw, 8.5rem);
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+        }
     </style>
 </head>
 <body>
@@ -170,7 +168,7 @@
         </div>
         
         <div class="content-relative">
-            <div data-aos="fade-up" data-aos-duration="1200">
+            <div data-aos="fade-up" data-aos-duration="1000">
                 <p class="text-blue-500 font-bold tracking-[0.5em] uppercase text-xs mb-6">Official Digital Broadcasting Partner</p>
                 <h1 class="text-huge font-900 uppercase">
                     ICC CRICKET<br>WORLD CUP<br>
@@ -184,7 +182,7 @@
                     </div>
                     <div class="hidden md:block w-[1px] h-16 bg-white/10"></div>
                     <div>
-                        <p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">Tournament Dates</p>
+                        <p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">Tournament Window</p>
                         <p class="text-2xl md:text-3xl font-bold italic accent-blue">March 10 — 20, 2026</p>
                     </div>
                 </div>
@@ -202,22 +200,22 @@
         <div class="content-relative">
             <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
                 
-                <!-- Left Column (Broadcaster & Format) -->
+                <!-- Left Column -->
                 <div class="xl:col-span-4 grid grid-cols-1 gap-8">
                     
-                    <!-- Broadcaster Card (Animated Blue Glow) -->
+                    <!-- Broadcaster Card (No Italic DGO) -->
                     <div class="animated-card" style="--glow-color: #3B82F6;" data-aos="fade-right">
                         <div class="card-content">
                             <span class="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px]">Strategic Partnership</span>
-                            <h2 class="text-3xl font-900 mt-6 leading-tight">Official Exclusive Broadcast Partner</h2>
-                            <h2 class="text-7xl font-900 accent-blue italic mt-2 tracking-tighter">DGO</h2>
+                            <h2 class="text-2xl font-800 mt-6 leading-tight">Official Exclusive Broadcast Partner</h2>
+                            <h2 class="text-7xl font-900 accent-blue mt-2 tracking-tighter uppercase">DGO</h2>
                             <p class="text-gray-400 text-sm mt-6 leading-relaxed">
-                                Delivering high-definition, low-latency digital coverage to the global cricket community.
+                                Bringing the stadium experience to screens worldwide through advanced digital broadcasting.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Format Card (Animated Green Glow) -->
+                    <!-- Format Card -->
                     <div class="animated-card" style="--glow-color: #22C55E;" data-aos="fade-right" data-aos-delay="200">
                         <div class="card-content">
                             <div class="flex items-end justify-between">
@@ -235,12 +233,12 @@
 
                 </div>
 
-                <!-- Fixtures Card (Right side) -->
+                <!-- Fixtures Card -->
                 <div class="xl:col-span-8" data-aos="fade-left">
                     <div class="bento-card h-full flex flex-col">
                         <div class="flex justify-between items-start mb-10">
                             <div>
-                                <h3 class="text-3xl font-900 uppercase italic tracking-tighter">Match Fixtures</h3>
+                                <h3 class="text-2xl font-800 uppercase italic tracking-tighter">Match Fixtures</h3>
                                 <p class="text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em] mt-1">Official Series Schedule</p>
                             </div>
                             <div class="text-right">
@@ -250,19 +248,84 @@
                         </div>
                         
                         <div class="flex flex-col flex-1 justify-between">
-                            <!-- Match Rows -->
-                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 10</span><div class="text-center font-bold text-xl">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-3 text-gray-700 font-normal text-sm italic">vs</span> <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> OMN</div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
                             
-                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 12</span><div class="text-center font-bold text-xl">OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> <span class="mx-3 text-gray-700 font-normal text-sm italic">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
-                            
-                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 14</span><div class="text-center font-bold text-xl">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-3 text-gray-700 font-normal text-sm italic">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
-                            
-                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 16</span><div class="text-center font-bold text-xl">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-3 text-gray-700 font-normal text-sm italic">vs</span> <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> OMN</div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
-                            
-                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 18</span><div class="text-center font-bold text-xl">OMN <img src="https://flagcdn.com/w40/om.png" class="flag-icon"> <span class="mx-3 text-gray-700 font-normal text-sm italic">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
-                            
-                            <!-- Highlighted Final Match -->
-                            <div class="fixture-row border-none"><span class="text-sm font-bold text-blue-400">MAR 20</span><div class="text-center font-bold text-2xl text-blue-400">NEP <img src="https://flagcdn.com/w40/np.png" class="flag-icon"> <span class="mx-4 text-white/20 font-light text-sm italic">vs</span> <img src="https://flagcdn.com/w40/ae.png" class="flag-icon"> UAE</div><span class="text-right text-xs font-black text-blue-400 uppercase tracking-widest">09:30 AM</span></div>
+                            <!-- MAR 10 -->
+                            <div class="fixture-row">
+                                <span class="text-sm font-bold text-gray-500">MAR 10</span>
+                                <div class="matchup-grid">
+                                    <span class="text-right font-bold text-lg">NEP</span>
+                                    <img src="https://flagcdn.com/w40/np.png" class="flag-icon">
+                                    <span class="text-gray-600 italic text-xs">vs</span>
+                                    <img src="https://flagcdn.com/w40/om.png" class="flag-icon">
+                                    <span class="text-left font-bold text-lg">OMN</span>
+                                </div>
+                                <span class="text-right text-xs font-bold text-gray-400">09:30 AM</span>
+                            </div>
+
+                            <!-- MAR 12 -->
+                            <div class="fixture-row">
+                                <span class="text-sm font-bold text-gray-500">MAR 12</span>
+                                <div class="matchup-grid">
+                                    <span class="text-right font-bold text-lg">OMN</span>
+                                    <img src="https://flagcdn.com/w40/om.png" class="flag-icon">
+                                    <span class="text-gray-600 italic text-xs">vs</span>
+                                    <img src="https://flagcdn.com/w40/ae.png" class="flag-icon">
+                                    <span class="text-left font-bold text-lg">UAE</span>
+                                </div>
+                                <span class="text-right text-xs font-bold text-gray-400">09:30 AM</span>
+                            </div>
+
+                            <!-- MAR 14 -->
+                            <div class="fixture-row">
+                                <span class="text-sm font-bold text-gray-500">MAR 14</span>
+                                <div class="matchup-grid">
+                                    <span class="text-right font-bold text-lg">NEP</span>
+                                    <img src="https://flagcdn.com/w40/np.png" class="flag-icon">
+                                    <span class="text-gray-600 italic text-xs">vs</span>
+                                    <img src="https://flagcdn.com/w40/ae.png" class="flag-icon">
+                                    <span class="text-left font-bold text-lg">UAE</span>
+                                </div>
+                                <span class="text-right text-xs font-bold text-gray-400">09:30 AM</span>
+                            </div>
+
+                            <!-- MAR 16 -->
+                            <div class="fixture-row">
+                                <span class="text-sm font-bold text-gray-500">MAR 16</span>
+                                <div class="matchup-grid">
+                                    <span class="text-right font-bold text-lg">NEP</span>
+                                    <img src="https://flagcdn.com/w40/np.png" class="flag-icon">
+                                    <span class="text-gray-600 italic text-xs">vs</span>
+                                    <img src="https://flagcdn.com/w40/om.png" class="flag-icon">
+                                    <span class="text-left font-bold text-lg">OMN</span>
+                                </div>
+                                <span class="text-right text-xs font-bold text-gray-400">09:30 AM</span>
+                            </div>
+
+                            <!-- MAR 18 -->
+                            <div class="fixture-row">
+                                <span class="text-sm font-bold text-gray-500">MAR 18</span>
+                                <div class="matchup-grid">
+                                    <span class="text-right font-bold text-lg">OMN</span>
+                                    <img src="https://flagcdn.com/w40/om.png" class="flag-icon">
+                                    <span class="text-gray-600 italic text-xs">vs</span>
+                                    <img src="https://flagcdn.com/w40/ae.png" class="flag-icon">
+                                    <span class="text-left font-bold text-lg">UAE</span>
+                                </div>
+                                <span class="text-right text-xs font-bold text-gray-400">09:30 AM</span>
+                            </div>
+
+                            <!-- MAR 20 (Final - Color Uniform with others) -->
+                            <div class="fixture-row border-none">
+                                <span class="text-sm font-bold text-gray-500">MAR 20</span>
+                                <div class="matchup-grid">
+                                    <span class="text-right font-bold text-lg">NEP</span>
+                                    <img src="https://flagcdn.com/w40/np.png" class="flag-icon">
+                                    <span class="text-gray-600 italic text-xs">vs</span>
+                                    <img src="https://flagcdn.com/w40/ae.png" class="flag-icon">
+                                    <span class="text-left font-bold text-lg">UAE</span>
+                                </div>
+                                <span class="text-right text-xs font-bold text-gray-400 uppercase tracking-widest">09:30 AM</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -274,7 +337,6 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS (Animate on Scroll)
         AOS.init({
             duration: 1000,
             easing: 'ease-in-out',

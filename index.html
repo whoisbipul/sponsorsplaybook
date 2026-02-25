@@ -1,30 +1,226 @@
-<!-- PAGE 5: DGO PLATFORM ECOSYSTEM -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DGO | ICC CWCL II Sponsorship Playbook</title>
+    
+    <!-- External Assets -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Global Styles */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #000; color: #ffffff; margin: 0; overflow-x: hidden; }
+
+        /* --- Global Animations --- */
+        @keyframes kenBurns { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .page-wrapper { position: relative; min-height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; padding: 80px 5%; overflow: hidden; }
+        .bg-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .bg-layer { width: 100%; height: 100%; background-size: cover; background-position: center; animation: kenBurns 20s ease-in-out infinite alternate; }
+        .overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.98) 100%); }
+        .content-relative { position: relative; z-index: 10; width: 100%; max-width: 1400px; margin: 0 auto; }
+
+        /* --- Premium Bento Cards --- */
+        .animated-card {
+            position: relative; background: #0a0a0a; border-radius: 40px; overflow: hidden; display: flex; flex-direction: column; padding: 3rem; height: 100%;
+        }
+        .animated-card::before {
+            content: ''; position: absolute; height: 250%; width: 250%; top: -75%; left: -75%;
+            background-image: conic-gradient(transparent, var(--glow-color), transparent 40%);
+            animation: rotate 6s linear infinite; z-index: 0;
+        }
+        .animated-card::after {
+            content: ''; position: absolute; inset: 1.5px; background: rgba(12, 12, 12, 0.98); backdrop-filter: blur(40px); border-radius: 39px; z-index: 1;
+        }
+        .card-content { position: relative; z-index: 10; width: 100%; }
+
+        .bento-card { background: rgba(12, 12, 12, 0.75); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(40px); border-radius: 40px; padding: 2.5rem; transition: all 0.3s ease; }
+
+        .deliverable-tile {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 1.2rem; display: flex; flex-direction: column; gap: 8px;
+        }
+
+        /* --- UI Elements --- */
+        .text-huge { font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.85; letter-spacing: -0.04em; }
+        .fixture-row { display: grid; grid-template-columns: 100px 1fr 100px; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .matchup-grid { display: grid; grid-template-columns: 1fr 40px 50px 40px 1fr; align-items: center; text-align: center; }
+        .flag-icon { width: 24px; height: 18px; object-fit: contain; display: inline-block; margin: 0 auto; }
+        .accent-blue { color: #3B82F6; }
+        .glass-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 100px; font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; }
+        
+        /* Data Bars */
+        .data-bar-bg { background: rgba(255, 255, 255, 0.05); height: 12px; border-radius: 10px; width: 100%; margin-top: 8px; overflow: hidden; }
+        .data-bar-fill { height: 100%; border-radius: 10px; transition: width 2s cubic-bezier(0.1, 0, 0, 1); width: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: HERO -->
     <section class="page-wrapper">
-        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/stats-bg.png');"></div><div class="overlay"></div></div>
+        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/league2.png');"></div><div class="overlay"></div></div>
+        <div class="content-relative" data-aos="fade-up">
+            <p class="text-blue-500 font-bold tracking-[0.5em] uppercase text-xs mb-6">Official Digital Broadcasting Partner</p>
+            <h1 class="text-huge font-900 uppercase">ICC CRICKET<br>WORLD CUP<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">LEAGUE 2</span></h1>
+            <div class="mt-16 flex flex-wrap gap-12">
+                <div><p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">Competing Nations</p><p class="text-2xl font-light">Nepal • Oman • UAE</p></div>
+                <div class="hidden md:block w-[1px] h-16 bg-white/10"></div>
+                <div><p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">Tournament Window</p><p class="text-2xl font-bold accent-blue italic">March 10 — 20, 2026</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 2: EVENT OVERVIEW -->
+    <section class="page-wrapper">
+        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page2.png');"></div><div class="overlay"></div></div>
+        <div class="content-relative">
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
+                <div class="xl:col-span-4 grid grid-cols-1 gap-8">
+                    <div class="animated-card" style="--glow-color: #3B82F6;" data-aos="fade-right">
+                        <div class="card-content">
+                            <span class="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px]">Strategic Partnership</span>
+                            <h2 class="text-2xl font-800 mt-6 leading-tight">Official Exclusive Broadcast Partner</h2>
+                            <h2 class="text-7xl font-900 accent-blue mt-2 tracking-tighter uppercase">DGO</h2>
+                        </div>
+                    </div>
+                    <div class="animated-card" style="--glow-color: #22C55E;" data-aos="fade-right" data-aos-delay="200">
+                        <div class="card-content flex items-end justify-between">
+                            <div><span class="text-xs text-gray-500 font-bold uppercase mb-2">Match Format</span><h3 class="text-7xl font-900 leading-none">ODI</h3></div>
+                            <div class="text-right"><span class="text-xs text-gray-500 font-bold uppercase mb-2">Total Innings</span><h3 class="text-7xl font-900 leading-none">50<span class="text-2xl font-light text-gray-600 ml-1">OV</span></h3></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="xl:col-span-8" data-aos="fade-left">
+                    <div class="bento-card">
+                        <div class="flex justify-between items-start mb-10">
+                            <div><h3 class="text-2xl font-800 uppercase italic tracking-tighter">Match Fixtures</h3><p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] mt-1">Official Series Schedule</p></div>
+                            <div class="text-right"><p class="text-blue-500 font-bold text-xs uppercase tracking-widest">Kirtipur, Nepal</p><p class="text-white text-sm">TU Int'l Cricket Ground</p></div>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 10</span><div class="matchup-grid"><span class="text-right font-bold text-lg">NEP</span><img src="https://flagcdn.com/w40/np.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/om.png" class="flag-icon"><span class="text-left font-bold text-lg">OMN</span></div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
+                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 12</span><div class="matchup-grid"><span class="text-right font-bold text-lg">OMN</span><img src="https://flagcdn.com/w40/om.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/ae.png" class="flag-icon"><span class="text-left font-bold text-lg">UAE</span></div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
+                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 14</span><div class="matchup-grid"><span class="text-right font-bold text-lg">NEP</span><img src="https://flagcdn.com/w40/np.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/ae.png" class="flag-icon"><span class="text-left font-bold text-lg">UAE</span></div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
+                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 16</span><div class="matchup-grid"><span class="text-right font-bold text-lg">NEP</span><img src="https://flagcdn.com/w40/np.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/om.png" class="flag-icon"><span class="text-left font-bold text-lg">OMN</span></div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
+                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 18</span><div class="matchup-grid"><span class="text-right font-bold text-lg">OMN</span><img src="https://flagcdn.com/w40/om.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/ae.png" class="flag-icon"><span class="text-left font-bold text-lg">UAE</span></div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
+                            <div class="fixture-row border-none"><span class="text-sm font-bold text-gray-500">MAR 20</span><div class="matchup-grid"><span class="text-right font-bold text-lg">NEP</span><img src="https://flagcdn.com/w40/np.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/ae.png" class="flag-icon"><span class="text-left font-bold text-lg">UAE</span></div><span class="text-right text-xs font-bold text-gray-400 uppercase tracking-widest">09:30 AM</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 3: VIEWERSHIP DATA -->
+    <section id="viewership-section" class="page-wrapper">
+        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page3.png');"></div><div class="overlay"></div></div>
+        <div class="content-relative">
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
+                <div class="xl:col-span-7 flex flex-col gap-6" data-aos="fade-right">
+                    <div class="bento-card">
+                        <div class="flex justify-between items-center mb-8">
+                            <h3 class="text-2xl font-900 uppercase italic tracking-tighter">The Nepal Impact</h3>
+                            <span class="glass-tag accent-blue">Historical Data</span>
+                        </div>
+                        <div class="space-y-6">
+                            <div><div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400"><span>Nepal vs USA (Peak)</span><span class="text-white text-base"><span class="counter" data-target="2738211">0</span> Viewers</span></div><div class="data-bar-bg"><div class="data-bar-fill bg-blue-600" data-width="100%"></div></div></div>
+                            <div><div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400"><span>Nepal vs UAE</span><span class="text-white text-base"><span class="counter" data-target="2272065">0</span> Viewers</span></div><div class="data-bar-bg"><div class="data-bar-fill bg-blue-500" data-width="83%"></div></div></div>
+                            <div><div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400"><span>Nepal vs Netherlands</span><span class="text-white text-base"><span class="counter" data-target="1726804">0</span> Viewers</span></div><div class="data-bar-bg"><div class="data-bar-fill bg-blue-400" data-width="63%"></div></div></div>
+                            <div class="pt-6 mt-6 border-t border-white/10">
+                                <p class="text-[10px] text-gray-500 font-bold uppercase mb-4 tracking-widest">Neutral Match Baseline</p>
+                                <div class="flex justify-between text-xs font-bold uppercase text-gray-600"><span>USA vs UAE Match</span><span><span class="counter" data-target="434337">0</span> Viewers</span></div>
+                                <div class="data-bar-bg"><div class="data-bar-fill bg-gray-600" data-width="16%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="xl:col-span-5 flex flex-col gap-6" data-aos="fade-left">
+                    <div class="bento-card border-l-4 border-blue-500"><span class="glass-tag accent-blue mb-4 inline-block">Iconic Series Moments</span><h4 class="text-xl font-900 uppercase mb-2">The Miracle at Kirtipur</h4><p class="text-sm text-gray-400 italic">Chasing 311, Nepal clinched a DLS thriller to qualify for the World Cup Qualifiers in 2023.</p></div>
+                    <div class="bento-card border-l-4 border-green-500"><h4 class="text-xl font-900 uppercase mb-2">The 1-Wicket Wide Escape</h4><p class="text-sm text-gray-400 italic">Nepal defeated Scotland in Oct 2024 through a dramatic wide ball on the final delivery.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 4: SPONSOR DELIVERABLES -->
+    <section class="page-wrapper">
+        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page4.png');"></div><div class="overlay"></div></div>
+        <div class="content-relative">
+            <div class="flex flex-col gap-10">
+                <div class="flex flex-col md:flex-row justify-between items-end gap-6" data-aos="fade-down">
+                    <div class="max-w-2xl">
+                        <span class="glass-tag accent-blue mb-4 inline-block">Exclusive Tier</span>
+                        <h2 class="text-5xl md:text-7xl font-900 uppercase leading-none">Title <span class="accent-blue">Sponsor</span></h2>
+                    </div>
+                    <div class="bento-card py-6 px-10 border-blue-500/50">
+                        <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500 mb-2">Series Title</p>
+                        <p class="text-xl font-800 text-white uppercase">[Your Brand] ICC CWC League 2 - Nepal, Oman, UAE</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="bento-card col-span-1" data-aos="fade-up">
+                        <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-4">Production Integration</h4>
+                        <div class="space-y-4">
+                            <div class="deliverable-tile"><p class="text-xs font-bold text-white uppercase">Commentary Mentions</p><p class="text-[10px] text-gray-400">Verbal "Presented by" mentions at the start, mid-break, and end of every innings.</p></div>
+                            <div class="deliverable-tile"><p class="text-xs font-bold text-white uppercase">Score Bug Logo</p><p class="text-[10px] text-gray-400">Fixed logo on the live match score-bug throughout the 50-over broadcast.</p></div>
+                        </div>
+                    </div>
+                    <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="text-green-500 font-bold uppercase tracking-widest text-[10px] mb-4">Visual Identity</h4>
+                        <div class="space-y-4">
+                            <div class="deliverable-tile"><p class="text-xs font-bold text-white uppercase">Milestone Graphics</p><p class="text-[10px] text-gray-400">Branded "Animated Overlays" triggered for every 4, 6, and Wicket moment.</p></div>
+                            <div class="deliverable-tile"><p class="text-xs font-bold text-white uppercase">L-Band Overlays</p><p class="text-[10px] text-gray-400">Prominent lower-third banners appearing during every over transition.</p></div>
+                        </div>
+                    </div>
+                    <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="text-purple-500 font-bold uppercase tracking-widest text-[10px] mb-4">DGO App Ecosystem</h4>
+                        <div class="space-y-4">
+                            <div class="deliverable-tile"><p class="text-xs font-bold text-white uppercase">App Home Takeover</p><p class="text-[10px] text-gray-400">The DGO homepage themed in your brand's colors for the series duration.</p></div>
+                            <div class="deliverable-tile"><p class="text-xs font-bold text-white uppercase">Match Predictor</p><p class="text-[10px] text-gray-400">"Powered by [Brand]" interactive fan predictor to drive lead generation.</p></div>
+                        </div>
+                    </div>
+                    <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="300">
+                        <h4 class="text-gray-400 font-bold uppercase tracking-widest text-[10px] mb-4">Post-Match & Social</h4>
+                        <div class="space-y-4">
+                            <div class="deliverable-tile"><p class="text-xs font-bold text-white uppercase">Branded Highlights</p><p class="text-[10px] text-gray-400">Full sponsorship of YouTube and in-app highlights for every match.</p></div>
+                            <div class="deliverable-tile"><p class="text-xs font-bold text-white uppercase">Push Notifications</p><p class="text-[10px] text-gray-400">Sponsor-branded match start and wicket alerts sent to 1M+ users.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 5: DGO PLATFORM ECOSYSTEM -->
+    <section class="page-wrapper">
+        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page5.png');"></div><div class="overlay"></div></div>
         <div class="content-relative">
             <div class="mb-12" data-aos="fade-up">
                 <h2 class="text-6xl font-900 uppercase leading-none">THE DGO<br><span class="accent-blue">ADVANTAGE</span></h2>
-                <p class="text-gray-400 mt-4 max-w-xl">More than just a broadcast; we are the largest digital sports community in the region. Reach fans where they live—on their screens.</p>
+                <p class="text-gray-400 mt-4 max-w-xl">Reach fans where they live—on their screens. DGO is the largest digital sports community in the region.</p>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bento-card text-center" data-aos="zoom-in" data-aos-delay="100">
                     <h3 class="text-5xl font-900 mb-2">1.5M+</h3>
                     <p class="text-blue-500 font-bold uppercase tracking-widest text-[10px]">Active App Downloads</p>
                     <div class="mt-4 h-[1px] w-full bg-white/10"></div>
-                    <p class="text-xs text-gray-500 mt-4">Direct access via push notifications to Nepal's most engaged cricket fans.</p>
+                    <p class="text-xs text-gray-500 mt-4">Direct access via push notifications to Nepal's most engaged fans.</p>
                 </div>
                 <div class="bento-card text-center" data-aos="zoom-in" data-aos-delay="200">
                     <h3 class="text-5xl font-900 mb-2">42 MIN</h3>
                     <p class="text-green-500 font-bold uppercase tracking-widest text-[10px]">Avg. Session Duration</p>
                     <div class="mt-4 h-[1px] w-full bg-white/10"></div>
-                    <p class="text-xs text-gray-500 mt-4">Industry-leading retention rates during Live ODI matches.</p>
+                    <p class="text-xs text-gray-500 mt-4">Unmatched fan attention throughout the 50-over match cycle.</p>
                 </div>
                 <div class="bento-card text-center" data-aos="zoom-in" data-aos-delay="300">
                     <h3 class="text-5xl font-900 mb-2">18-34</h3>
                     <p class="text-purple-500 font-bold uppercase tracking-widest text-[10px]">Core Demographic</p>
                     <div class="mt-4 h-[1px] w-full bg-white/10"></div>
-                    <p class="text-xs text-gray-500 mt-4">The primary consumer spending bracket in Nepal and UAE.</p>
+                    <p class="text-xs text-gray-500 mt-4">Targeting the high-growth consumer bracket across Nepal and UAE.</p>
                 </div>
             </div>
         </div>
@@ -32,25 +228,24 @@
 
     <!-- PAGE 6: INVESTMENT TIERS -->
     <section class="page-wrapper">
-        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/tier-bg.png');"></div><div class="overlay"></div></div>
+        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page6.png');"></div><div class="overlay"></div></div>
         <div class="content-relative">
             <h2 class="text-4xl font-900 uppercase mb-12 text-center" data-aos="fade-down">Partnership <span class="accent-blue">Opportunities</span></h2>
-            
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
                 
                 <!-- Associate -->
-                <div class="bento-card opacity-80 scale-95" data-aos="fade-right">
+                <div class="bento-card opacity-80" data-aos="fade-right">
                     <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Tier 03</p>
                     <h3 class="text-2xl font-800 mb-6">ASSOCIATE</h3>
                     <ul class="space-y-4 text-sm text-gray-400">
                         <li class="flex items-center gap-2"> <span class="text-blue-500">✔</span> L-Band Advertising </li>
                         <li class="flex items-center gap-2"> <span class="text-blue-500">✔</span> 30s Spot (2 per innings) </li>
-                        <li class="flex items-center gap-2"> <span class="text-blue-500">✔</span> App Sidebar Banner </li>
+                        <li class="flex items-center gap-2"> <span class="text-blue-500">✔</span> Social Media Mentions </li>
                     </ul>
-                    <button class="w-full mt-8 py-3 border border-white/20 rounded-xl hover:bg-white/10 transition font-bold text-xs uppercase tracking-widest">Inquire Now</button>
+                    <button class="w-full mt-8 py-3 border border-white/20 rounded-xl hover:bg-white/10 transition font-bold text-xs uppercase tracking-widest">Inquire</button>
                 </div>
 
-                <!-- Title (The Featured One) -->
+                <!-- Title (Main focus) -->
                 <div class="animated-card" style="--glow-color: #3B82F6;" data-aos="fade-up">
                     <div class="card-content">
                         <p class="text-[10px] font-bold text-blue-500 uppercase tracking-widest mb-2">The Premium Tier</p>
@@ -61,44 +256,75 @@
                             <li class="flex items-center gap-2 font-semibold"> <span class="text-blue-500">✔</span> Presenting Mentions </li>
                             <li class="flex items-center gap-2 font-semibold"> <span class="text-blue-500">✔</span> App Home Takeover </li>
                         </ul>
-                        <button class="w-full mt-8 py-4 bg-blue-600 rounded-2xl hover:bg-blue-700 transition font-900 text-sm uppercase tracking-[0.2em]">Contact for Exclusive Access</button>
+                        <button class="w-full mt-8 py-4 bg-blue-600 rounded-2xl hover:bg-blue-700 transition font-900 text-sm uppercase tracking-[0.2em]">Book Exclusive</button>
                     </div>
                 </div>
 
                 <!-- Powered By -->
-                <div class="bento-card opacity-80 scale-95" data-aos="fade-left">
+                <div class="bento-card opacity-80" data-aos="fade-left">
                     <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Tier 02</p>
                     <h3 class="text-2xl font-800 mb-6">POWERED BY</h3>
                     <ul class="space-y-4 text-sm text-gray-400">
                         <li class="flex items-center gap-2"> <span class="text-blue-500">✔</span> Highlight Sponsorship </li>
                         <li class="flex items-center gap-2"> <span class="text-blue-500">✔</span> 30s Spot (4 per innings) </li>
-                        <li class="flex items-center gap-2"> <span class="text-blue-500">✔</span> Social Media Integration </li>
+                        <li class="flex items-center gap-2"> <span class="text-blue-500">✔</span> Interactive Predictor </li>
                     </ul>
-                    <button class="w-full mt-8 py-3 border border-white/20 rounded-xl hover:bg-white/10 transition font-bold text-xs uppercase tracking-widest">Inquire Now</button>
+                    <button class="w-full mt-8 py-3 border border-white/20 rounded-xl hover:bg-white/10 transition font-bold text-xs uppercase tracking-widest">Inquire</button>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- FOOTER / CONTACT -->
-    <footer class="page-wrapper !min-h-[60vh] bg-zinc-950">
+    <!-- FOOTER -->
+    <footer class="page-wrapper !min-h-[50vh] bg-black">
         <div class="content-relative text-center">
-            <img src="assets/dgo-logo.png" class="h-16 mx-auto mb-8 opacity-50 grayscale hover:grayscale-0 transition duration-500" alt="DGO Logo">
-            <h2 class="text-5xl md:text-7xl font-900 uppercase mb-8">Ready to <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">Collaborate?</span></h2>
-            
-            <div class="flex flex-wrap justify-center gap-8 mt-12">
-                <div class="text-left">
-                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1">Partnerships Lead</p>
-                    <p class="text-xl font-bold italic">partnerships@dgo.com.np</p>
+            <h2 class="text-5xl md:text-7xl font-900 uppercase mb-8">Ready to <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">Play?</span></h2>
+            <div class="flex flex-col md:flex-row justify-center gap-12 mt-12">
+                <div class="text-center md:text-left">
+                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1">Partnerships</p>
+                    <p class="text-xl font-bold">partnerships@dgo.com.np</p>
                 </div>
-                <div class="w-[1px] h-12 bg-white/10 hidden md:block"></div>
-                <div class="text-left">
-                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1">Office Location</p>
-                    <p class="text-xl font-bold italic">Kathmandu, Nepal</p>
+                <div class="text-center md:text-left">
+                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-1">Office</p>
+                    <p class="text-xl font-bold">Kathmandu, Nepal</p>
                 </div>
             </div>
-
-            <p class="mt-24 text-[10px] text-gray-600 font-bold uppercase tracking-[0.5em]">© 2024 DGO Broadcasting Network • All Rights Reserved</p>
+            <p class="mt-20 text-[10px] text-gray-600 font-bold uppercase tracking-[0.5em]">© 2024 DGO Broadcasting Network</p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: false, mirror: true });
+        
+        const viewershipSection = document.getElementById('viewership-section');
+        const counters = document.querySelectorAll('.counter');
+        const bars = document.querySelectorAll('.data-bar-fill');
+        let animated = false;
+
+        const animateData = () => {
+            if (animated) return;
+            bars.forEach(bar => { bar.style.width = bar.getAttribute('data-width'); });
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                const updateCount = () => {
+                    const current = +counter.innerText.replace(/,/g, '');
+                    if (current < target) {
+                        const nextValue = Math.ceil(current + increment);
+                        counter.innerText = (nextValue > target ? target : nextValue).toLocaleString();
+                        setTimeout(updateCount, 16);
+                    } else { counter.innerText = target.toLocaleString(); }
+                };
+                updateCount();
+            });
+            animated = true;
+        };
+
+        const observer = new IntersectionObserver((entries) => { if(entries[0].isIntersecting) { animateData(); } }, { threshold: 0.3 });
+        observer.observe(viewershipSection);
+    </script>
+</body>
+</html>

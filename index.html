@@ -62,7 +62,7 @@
 
         .logo-placeholder-badge {
             animation: pulseGlow 2s ease-in-out infinite;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             border: 2px dashed #3B82F6;
             padding: 10px 20px;
             border-radius: 12px;
@@ -76,6 +76,7 @@
             letter-spacing: 2px;
             pointer-events: none;
             backdrop-filter: blur(8px);
+            z-index: 100;
         }
 
         /* UI Elements */
@@ -195,21 +196,19 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <!-- Column 1 -->
                     <div class="bento-card col-span-1" data-aos="fade-up">
                         <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-4">Screen Real Estate</h4>
                         <div class="space-y-4">
                             <div class="deliverable-tile" onclick="openInventoryModal('perm_logo')">
                                 <p class="text-xs font-bold text-white uppercase">Permanent Screen Logo</p>
-                                <p class="text-[10px] text-gray-400">Fixed Top-Right brand watermark for maximum recall.</p>
+                                <p class="text-[10px] text-gray-400">Constant Top-Right presence for maximum brand recall.</p>
                             </div>
-                            <div class="deliverable-tile border-blue-500/20 bg-blue-500/5" onclick="openInventoryModal('replay_logo')">
-                                <p class="text-xs font-bold text-blue-400 uppercase">Replay Logo Branding</p>
+                            <div class="deliverable-tile" onclick="openInventoryModal('replay_logo')">
+                                <p class="text-xs font-bold text-white uppercase">Replay Logo Branding</p>
                                 <p class="text-[10px] text-gray-400">Exclusive branding on all match transition replays.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Column 2 -->
                     <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="100">
                         <h4 class="text-green-500 font-bold uppercase tracking-widest text-[10px] mb-4">Visual Identity</h4>
                         <div class="space-y-4">
@@ -223,21 +222,19 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Column 3 -->
                     <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="200">
                         <h4 class="text-purple-500 font-bold uppercase tracking-widest text-[10px] mb-4">Commercial Media</h4>
                         <div class="space-y-4">
                             <div class="deliverable-tile border-purple-500/20 bg-purple-500/5" onclick="openInventoryModal('tvc')">
                                 <p class="text-xs font-bold text-purple-400 uppercase">TVC Mid-Rolls</p>
-                                <p class="text-[10px] text-gray-400">Premium 30s & 15s spots broadcast during every over-break.</p>
+                                <p class="text-[10px] text-gray-400">Premium spots broadcast during every over-break.</p>
                             </div>
                             <div class="deliverable-tile" onclick="openInventoryModal('score_bug')">
                                 <p class="text-xs font-bold text-white uppercase">Score Bug Logo</p>
-                                <p class="text-[10px] text-gray-400">Branding integrated into the live digital match score-bug.</p>
+                                <p class="text-[10px] text-gray-400">Primary brand placement integrated into match scoreboard.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Column 4 -->
                     <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="300">
                         <h4 class="text-gray-400 font-bold uppercase tracking-widest text-[10px] mb-4">DGO App Ecosystem</h4>
                         <div class="space-y-4">
@@ -260,15 +257,13 @@
     <div id="inventory-modal" class="fixed inset-0 flex items-center justify-center p-6 backdrop-blur-3xl">
         <div class="absolute inset-0 bg-black/90" onclick="closeInventoryModal()"></div>
         <div class="modal-content-glass max-w-6xl w-full rounded-[40px] shadow-2xl relative">
-            <button onclick="closeInventoryModal()" class="absolute top-6 right-8 z-50 text-white/40 hover:text-white transition text-4xl font-light">&times;</button>
+            <button onclick="closeInventoryModal()" class="absolute top-6 right-8 z-[110] text-white/40 hover:text-white transition text-4xl font-light">&times;</button>
             <div class="grid grid-cols-1 lg:grid-cols-2 w-full">
-                <!-- Media Section -->
-                <div class="relative bg-[#111] aspect-video lg:aspect-auto flex items-center justify-center overflow-hidden min-h-[450px]">
-                    <div id="modal-media-container" class="w-full h-full relative">
-                        <!-- Content Injected Here -->
+                <div class="relative bg-[#111] aspect-video lg:aspect-auto flex items-center justify-center overflow-hidden min-h-[500px]">
+                    <div id="modal-media-container" class="w-full h-full relative flex items-center justify-center">
+                        <!-- Content Injected via JS -->
                     </div>
                 </div>
-                <!-- Info Section -->
                 <div class="p-12 lg:p-16 flex flex-col justify-center bg-[#0a0a0a]">
                     <div class="mb-8">
                         <span id="modal-tag" class="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] block mb-2">Category</span>
@@ -284,22 +279,22 @@
         </div>
     </div>
 
-    <!-- PAGE 5: DGO PLATFORM ECOSYSTEM -->
+    <!-- PAGE 5: DGO PLATFORM ADVANTAGE -->
     <section class="page-wrapper">
         <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page5.png');"></div><div class="overlay"></div></div>
         <div class="content-relative">
             <div class="mb-12" data-aos="fade-up">
                 <h2 class="text-6xl font-900 uppercase leading-none">THE DGO<br><span class="accent-blue">ADVANTAGE</span></h2>
-                <p class="text-gray-400 mt-4 max-w-xl">More than a broadcast—DGO is the heart of Nepal's digital sports community.</p>
+                <p class="text-gray-400 mt-4 max-w-xl">Direct access to Nepal's largest digital sports community.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bento-card text-center" data-aos="zoom-in" data-aos-delay="100">
                     <h3 class="text-5xl font-900 mb-2">1.5M+</h3>
-                    <p class="text-blue-500 font-bold uppercase tracking-widest text-[10px]">Active App Downloads</p>
+                    <p class="text-blue-500 font-bold uppercase tracking-widest text-[10px]">App Downloads</p>
                 </div>
                 <div class="bento-card text-center" data-aos="zoom-in" data-aos-delay="200">
                     <h3 class="text-5xl font-900 mb-2">42 MIN</h3>
-                    <p class="text-green-500 font-bold uppercase tracking-widest text-[10px]">Avg. Session Duration</p>
+                    <p class="text-green-500 font-bold uppercase tracking-widest text-[10px]">Avg. Session</p>
                 </div>
                 <div class="bento-card text-center" data-aos="zoom-in" data-aos-delay="300">
                     <h3 class="text-5xl font-900 mb-2">18-34</h3>
@@ -310,9 +305,9 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="page-wrapper !min-h-[50vh] bg-black">
+    <footer class="page-wrapper !min-h-[40vh] bg-black">
         <div class="content-relative text-center">
-            <h2 class="text-5xl md:text-7xl font-900 uppercase mb-8">Ready to <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">Collaborate?</span></h2>
+            <h2 class="text-5xl md:text-7xl font-900 uppercase mb-8">Ready to <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">Partner?</span></h2>
             <p class="text-xl font-bold italic">partnerships@dgo.com.np</p>
             <p class="mt-20 text-[10px] text-gray-600 font-bold uppercase tracking-[0.5em]">© 2024 DGO Broadcasting Network</p>
         </div>
@@ -327,59 +322,58 @@
             perm_logo: {
                 tag: "Screen Real Estate",
                 title: "Permanent Screen Logo",
-                desc: "Your brand logo is fixed as a watermark in the Top-Right corner of the live broadcast. Unlike 30-second commercials that viewers may skip, this remains on-screen for the entire duration of the match, ensuring constant visibility and high passive brand recall.",
-                impact: "Highest Gaze-Time of any visual asset in the playbook.",
+                desc: "Your brand logo is fixed as a watermark in the Top-Right corner of the live broadcast. Unlike commercials that viewers may skip, this remains on-screen for the entire duration of the match, providing maximum passive brand recall.",
+                impact: "Highest Gaze-Time of any visual asset in the broadcast.",
                 url: "assets/logo1.png",
                 showBadge: true
             },
             replay_logo: {
                 tag: "High-Impact Branding",
                 title: "Replay Logo Branding",
-                desc: "Every slow-motion replay transition features your brand identity. By appearing during the match's most high-octane moments—wickets and boundaries—your logo is associated with the viewer's peak emotional excitement.",
-                impact: "Premium association with match-defining 'Miracle' moments.",
-                url: "assets/page4.png",
-                showBadge: false
+                desc: "Every slow-motion replay transition features your brand identity. By appearing during the match's most high-octane emotional moments—wickets and boundaries—your logo is associated with the viewer's peak excitement.",
+                impact: "Premium association with match-defining exciting moments.",
+                url: "assets/page4.png"
             },
             l_shape: {
                 tag: "Visual Identity",
                 title: "L-Shaped & Aston Ads",
-                desc: "Dynamic animated graphics that wrap around the live footage. These are the modern standard for sports broadcasting, allowing your brand to communicate key messages without interrupting the active gameplay.",
-                impact: "Uninterrupted brand communication during live broadcast action.",
+                desc: "Dynamic animated graphics that wrap around the live footage. These are the modern standard for sports broadcasting, allowing your brand to communicate messages without interrupting active gameplay.",
+                impact: "Uninterrupted brand communication during live action.",
                 url: "assets/page4.png"
             },
             contextual: {
                 tag: "Smart Trigger",
                 title: "Contextual Ads",
-                desc: "Intelligence-driven ad triggers. When a wicket falls or a bowling change occurs, a specific 'Brand Moment' overlay appears, capturing the viewer's attention exactly when their focus on the screen is highest.",
-                impact: "Targeted delivery at peak emotional-stakes moments.",
+                desc: "Intelligence-driven ad triggers. When a wicket falls or a bowling change occurs, a specific 'Brand Moment' overlay appears, capturing the viewer's attention exactly when their focus is highest.",
+                impact: "Targeted delivery at high-emotional-stakes moments.",
                 url: "assets/page4.png"
             },
             tvc: {
                 tag: "Commercial Media",
                 title: "TVC Mid-Rolls",
-                desc: "Traditional 30-second and 15-second high-definition commercial spots broadcast during every over-break. This is the primary window for deep storytelling and detailed product showcase.",
-                impact: "Maximum audio-visual storytelling potential for brand narrative.",
+                desc: "Traditional 30s and 15s HD commercial spots broadcast during every over-break. This is the primary window for deep storytelling and detailed product showcase.",
+                impact: "Maximum audio-visual storytelling potential.",
                 url: "assets/page4.png"
             },
             score_bug: {
                 tag: "Critical UI",
                 title: "Score Bug Logo",
-                desc: "Your brand is integrated directly into the Match Score-Bug. Since fans look at the scoreboard every 10-15 seconds, this placement offers the highest frequency of visual touchpoints throughout the day.",
-                impact: "Consistent, functional, and unavoidable brand presence.",
+                desc: "Your brand integrated into the scoreboard. Since fans look at the score every 15 seconds, this placement offers the highest frequency of visual touchpoints.",
+                impact: "Consistent, functional brand presence.",
                 url: "assets/page4.png"
             },
             home_takeover: {
                 tag: "Digital Ecosystem",
                 title: "App Home Takeover",
-                desc: "The entire DGO application UI is reskinned in your brand colors and imagery. Every user who opens the app to watch the match is immediately greeted by your brand's visual identity.",
+                desc: "The entire DGO application UI is reskinned in your brand colors. Every user who opens the app to watch the match is immediately greeted by your brand's visual identity.",
                 impact: "100% Share-of-Voice across Nepal's largest digital sports app.",
                 url: "assets/page4.png"
             },
             notifications: {
                 tag: "Direct Engagement",
                 title: "Push Notifications",
-                desc: "Direct push alerts sent to over 1.5M+ active mobile users. Notifications for 'Match Starting' or 'Wicket Alerts' are powered by your brand, landing directly on the user's mobile lock screen.",
-                impact: "Immediate click-through and direct fan engagement at scale.",
+                desc: "Direct push alerts sent to over 1.5M+ users. Notifications for 'Match Starting' or 'Wicket Alerts' are powered by your brand, landing on the user's mobile lock screen.",
+                impact: "Immediate click-through and direct lock-screen engagement.",
                 url: "assets/page4.png"
             }
         };
@@ -396,10 +390,15 @@
             document.getElementById('modal-desc').innerText = data.desc;
             document.getElementById('modal-impact').innerText = data.impact;
 
-            // Fill left pane with image (object-cover)
-            mediaContainer.innerHTML = `<img src="${data.url}" class="w-full h-full object-cover" alt="${data.title}">`;
+            // Load visual reference
+            mediaContainer.innerHTML = `
+                <img src="${data.url}" 
+                     alt="${data.title}" 
+                     style="display: block; width: 100%; height: 100%; object-fit: cover;" 
+                     onerror="this.parentElement.innerHTML='<p class=\'text-gray-600 text-xs uppercase font-bold\'>Reference Asset: ${data.url} Not Found</p>'">
+            `;
 
-            // If it's the logo card, add the animated badge on top-right
+            // Badge for the screen logo specifically
             if (data.showBadge) {
                 mediaContainer.innerHTML += `<div class="logo-placeholder-badge">Your Logo Here</div>`;
             }
@@ -422,8 +421,8 @@
                     const updateCount = () => {
                         const current = +counter.innerText.replace(/,/g, '');
                         if (current < target) {
-                            const next = Math.ceil(current + (target / 100));
-                            counter.innerText = (next > target ? target : next).toLocaleString();
+                            const nextValue = Math.ceil(current + (target / 100));
+                            counter.innerText = (nextValue > target ? target : nextValue).toLocaleString();
                             setTimeout(updateCount, 16);
                         }
                     };

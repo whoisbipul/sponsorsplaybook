@@ -41,9 +41,16 @@
 
         .bento-card { background: rgba(12, 12, 12, 0.75); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(40px); border-radius: 40px; padding: 2.5rem; transition: all 0.3s ease; }
 
+        /* --- Clickable Deliverable Tiles --- */
         .deliverable-tile {
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 1.2rem; display: flex; flex-direction: column; gap: 8px;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 1.2rem; 
+            display: flex; flex-direction: column; gap: 8px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; z-index: 20;
         }
+        .deliverable-tile:hover {
+            background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .deliverable-tile:active { transform: scale(0.98); }
 
         /* --- UI Elements --- */
         .text-huge { font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.85; letter-spacing: -0.04em; }
@@ -53,6 +60,11 @@
         .accent-blue { color: #3B82F6; }
         .glass-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 100px; font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; }
         
+        /* Modal Styles */
+        #inventory-modal { visibility: hidden; opacity: 0; transition: all 0.4s ease; z-index: 1000; }
+        #inventory-modal.active { visibility: visible; opacity: 1; }
+        .modal-content-glass { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1); }
+
         /* Data Bars */
         .data-bar-bg { background: rgba(255, 255, 255, 0.05); height: 12px; border-radius: 10px; width: 100%; margin-top: 8px; overflow: hidden; }
         .data-bar-fill { height: 100%; border-radius: 10px; transition: width 2s cubic-bezier(0.1, 0, 0, 1); width: 0; }
@@ -161,18 +173,18 @@
                     </div>
                 </div>
 
-                <!-- Grid of Deliverables -->
+                <!-- Grid of Deliverables (Clickable Tiles) -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                     
                     <!-- 1. BROADCAST DOMINANCE -->
                     <div class="bento-card col-span-1" data-aos="fade-up">
                         <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-4">Screen Real Estate</h4>
                         <div class="space-y-4">
-                            <div class="deliverable-tile">
+                            <div class="deliverable-tile" onclick="openInventoryModal('perm_logo')">
                                 <p class="text-xs font-bold text-white uppercase">Permanent Screen Logo</p>
                                 <p class="text-[10px] text-gray-400">Fixed Top-Left brand watermark present throughout the entire live match broadcast.</p>
                             </div>
-                            <div class="deliverable-tile border-blue-500/20 bg-blue-500/5">
+                            <div class="deliverable-tile border-blue-500/20 bg-blue-500/5" onclick="openInventoryModal('replay_logo')">
                                 <p class="text-xs font-bold text-blue-400 uppercase">Replay Logo Branding</p>
                                 <p class="text-[10px] text-gray-400">Brand-exclusive animated transition logo appearing before every slow-motion replay.</p>
                             </div>
@@ -183,11 +195,11 @@
                     <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="100">
                         <h4 class="text-green-500 font-bold uppercase tracking-widest text-[10px] mb-4">Visual Identity</h4>
                         <div class="space-y-4">
-                            <div class="deliverable-tile">
+                            <div class="deliverable-tile" onclick="openInventoryModal('l_shape')">
                                 <p class="text-xs font-bold text-white uppercase">L-Shaped & Aston Ads</p>
                                 <p class="text-[10px] text-gray-400">High-visibility side and bottom-third overlays triggered during active gameplay.</p>
                             </div>
-                            <div class="deliverable-tile">
+                            <div class="deliverable-tile" onclick="openInventoryModal('contextual')">
                                 <p class="text-xs font-bold text-white uppercase">Contextual Ads</p>
                                 <p class="text-[10px] text-gray-400">Smart triggers: "Brand Moment" overlays during Bowling Changes and Fall of Wickets.</p>
                             </div>
@@ -198,11 +210,11 @@
                     <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="200">
                         <h4 class="text-purple-500 font-bold uppercase tracking-widest text-[10px] mb-4">Commercial Media</h4>
                         <div class="space-y-4">
-                            <div class="deliverable-tile border-purple-500/20 bg-purple-500/5">
+                            <div class="deliverable-tile border-purple-500/20 bg-purple-500/5" onclick="openInventoryModal('tvc')">
                                 <p class="text-xs font-bold text-purple-400 uppercase">TVC Mid-Rolls</p>
                                 <p class="text-[10px] text-gray-400">Premium 30s & 15s spots broadcast during every over-break and innings transition.</p>
                             </div>
-                            <div class="deliverable-tile">
+                            <div class="deliverable-tile" onclick="openInventoryModal('score_bug')">
                                 <p class="text-xs font-bold text-white uppercase">Score Bug Logo</p>
                                 <p class="text-[10px] text-gray-400">Primary brand placement integrated into the live digital match score-bug.</p>
                             </div>
@@ -213,11 +225,11 @@
                     <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="300">
                         <h4 class="text-gray-400 font-bold uppercase tracking-widest text-[10px] mb-4">DGO App Ecosystem</h4>
                         <div class="space-y-4">
-                            <div class="deliverable-tile">
+                            <div class="deliverable-tile" onclick="openInventoryModal('home_takeover')">
                                 <p class="text-xs font-bold text-white uppercase">Home Screen Takeover</p>
                                 <p class="text-[10px] text-gray-400">Full UI skinning of the DGO App in your brand colors for the tournament duration.</p>
                             </div>
-                            <div class="deliverable-tile">
+                            <div class="deliverable-tile" onclick="openInventoryModal('notifications')">
                                 <p class="text-xs font-bold text-white uppercase">Push Notifications</p>
                                 <p class="text-[10px] text-gray-400">Sponsor-branded match alerts and highlights sent to 1.5M+ active users.</p>
                             </div>
@@ -228,6 +240,38 @@
             </div>
         </div>
     </section>
+
+    <!-- INVENTORY DETAIL MODAL -->
+    <div id="inventory-modal" class="fixed inset-0 flex items-center justify-center p-6 backdrop-blur-3xl">
+        <div class="absolute inset-0 bg-black/80" onclick="closeInventoryModal()"></div>
+        <div class="modal-content-glass max-w-5xl w-full rounded-[40px] overflow-hidden relative shadow-2xl">
+            <!-- Close Button -->
+            <button onclick="closeInventoryModal()" class="absolute top-6 right-6 z-50 text-white/50 hover:text-white transition text-3xl">&times;</button>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                <!-- Media Area -->
+                <div class="aspect-video lg:aspect-auto bg-zinc-900 flex items-center justify-center p-8">
+                    <div id="modal-media-container" class="w-full h-full rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
+                        <!-- Content will be injected here (Image or Video) -->
+                        <div class="text-center">
+                            <div class="w-16 h-16 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
+                            <p class="text-xs font-bold uppercase tracking-widest text-gray-500">Awaiting Visual Assets</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content Area -->
+                <div class="p-12 flex flex-col justify-center">
+                    <span id="modal-tag" class="glass-tag accent-blue inline-block mb-4">Inventory Detail</span>
+                    <h3 id="modal-title" class="text-4xl font-900 uppercase italic mb-6 leading-tight">Deliverable Name</h3>
+                    <p id="modal-desc" class="text-gray-400 text-lg leading-relaxed mb-8">Detailed information about how this specific inventory asset adds value to your brand during the ICC CWCL II broadcast.</p>
+                    <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Sponsorship Impact</p>
+                        <p id="modal-impact" class="text-sm italic text-blue-400">High brand recall through continuous visibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- PAGE 5: DGO PLATFORM ECOSYSTEM -->
     <section class="page-wrapper">
@@ -300,7 +344,7 @@
                     <h3 class="text-2xl font-800 mb-6">POWERED BY</h3>
                     <ul class="space-y-4 text-sm text-gray-400">
                         <li class="flex items-center gap-2"> <span class="text-blue-500">✔</span> Highlight Sponsorship </li>
-                        <li class="flex items-center gap-2"> <span class="text-blue-500">✔</span> 30s Spot (4 per innings) </li>
+                        <li class="flex items-center gap-2) <span class="text-blue-500">✔</span> 30s Spot (4 per innings) </li>
                         <li class="flex items-center gap-2"> <span class="text-blue-500">✔</span> Interactive Predictor </li>
                     </ul>
                     <button class="w-full mt-8 py-3 border border-white/20 rounded-xl hover:bg-white/10 transition font-bold text-xs uppercase tracking-widest">Inquire</button>
@@ -332,6 +376,83 @@
     <script>
         AOS.init({ duration: 1000, once: false, mirror: true });
         
+        /* Modal Content Management */
+        const inventoryData = {
+            perm_logo: {
+                tag: "Screen Real Estate",
+                title: "Permanent Screen Logo",
+                desc: "Your brand logo is fixed as a watermark in the Top-Left corner of the broadcast. Unlike commercials, this remains on-screen throughout the entire 100 overs, providing maximum passive brand recall.",
+                impact: "Highest Gaze-Time of any visual asset.",
+                media: "image" // Placeholder: replace with URL
+            },
+            replay_logo: {
+                tag: "Premium Branding",
+                title: "Replay Logo Branding",
+                desc: "Every time a boundary, wicket, or significant moment is replayed in slow-motion, your brand logo acts as the 'shutter' or transition animation.",
+                impact: "Associated with the most exciting moments of the match.",
+                media: "video" 
+            },
+            l_shape: {
+                tag: "Visual Identity",
+                title: "L-Shaped & Aston Ads",
+                desc: "Dynamic animated banners that appear around the live action. L-shapes occupy the left and bottom gutters, while Astons appear in the bottom third without interrupting play.",
+                impact: "Premium visibility without disrupting the fan experience.",
+                media: "image"
+            },
+            contextual: {
+                tag: "Smart Triggers",
+                title: "Contextual Ads",
+                desc: "Intelligence-based ad triggers. When a wicket falls or a bowling change occurs, a specific 'Brand Moment' overlay appears, capturing the viewer's heightened attention.",
+                impact: "Targeted delivery at high-emotional-stakes moments.",
+                media: "image"
+            },
+            tvc: {
+                tag: "Commercial Media",
+                title: "TVC Mid-Rolls",
+                desc: "Traditional high-impact 30-second and 15-second video commercials broadcast during every over transition and innings break.",
+                impact: "Perfect for deep storytelling and product showcases.",
+                media: "video"
+            },
+            score_bug: {
+                tag: "Critical UI",
+                title: "Score Bug Logo",
+                desc: "Your brand is integrated directly into the Match Score-Bug. Since fans look at the score every few seconds, this is the most frequently viewed asset on the screen.",
+                impact: "Consistent, functional, and unavoidable brand presence.",
+                media: "image"
+            },
+            home_takeover: {
+                tag: "Digital Ecosystem",
+                title: "DGO App Home Takeover",
+                desc: "The entire DGO application UI is reskinned in your brand colors and imagery for the match duration. Every user who opens the app sees your brand first.",
+                impact: "Complete digital dominance across Nepal's largest sports platform.",
+                media: "image"
+            },
+            notifications: {
+                tag: "Direct Access",
+                title: "Push Notifications",
+                desc: "Direct push alerts to over 1.5M+ active mobile users. Notifications for match starts, results, and wickets are 'Powered by [Your Brand]'.",
+                impact: "Drive immediate traffic and high click-through rates.",
+                media: "image"
+            }
+        };
+
+        const modal = document.getElementById('inventory-modal');
+        function openInventoryModal(key) {
+            const data = inventoryData[key];
+            document.getElementById('modal-tag').innerText = data.tag;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-desc').innerText = data.desc;
+            document.getElementById('modal-impact').innerText = data.impact;
+            
+            // Note: You can add actual images/videos to modal-media-container here
+            modal.classList.add('active');
+        }
+
+        function closeInventoryModal() {
+            modal.classList.remove('active');
+        }
+
+        /* Viewership Data Animation */
         const viewershipSection = document.getElementById('viewership-section');
         const counters = document.querySelectorAll('.counter');
         const bars = document.querySelectorAll('.data-bar-fill');

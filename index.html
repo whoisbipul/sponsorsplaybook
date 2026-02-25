@@ -19,8 +19,8 @@
         @keyframes kenBurns { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes pulseGlow {
-            0%, 100% { opacity: 0.7; transform: scale(1); box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
-            50% { opacity: 1; transform: scale(1.02); box-shadow: 0 0 25px rgba(59, 130, 246, 0.7); }
+            0%, 100% { opacity: 0.7; transform: scale(1); box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
+            50% { opacity: 1; transform: scale(1.05); box-shadow: 0 0 30px rgba(59, 130, 246, 0.8); }
         }
 
         .page-wrapper { position: relative; min-height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; padding: 80px 5%; overflow: hidden; }
@@ -30,19 +30,6 @@
         .content-relative { position: relative; z-index: 10; width: 100%; max-width: 1400px; margin: 0 auto; }
 
         /* --- Premium Bento Cards --- */
-        .animated-card {
-            position: relative; background: #0a0a0a; border-radius: 40px; overflow: hidden; display: flex; flex-direction: column; padding: 3rem; height: 100%;
-        }
-        .animated-card::before {
-            content: ''; position: absolute; height: 250%; width: 250%; top: -75%; left: -75%;
-            background-image: conic-gradient(transparent, var(--glow-color), transparent 40%);
-            animation: rotate 6s linear infinite; z-index: 0;
-        }
-        .animated-card::after {
-            content: ''; position: absolute; inset: 1.5px; background: rgba(12, 12, 12, 0.98); backdrop-filter: blur(40px); border-radius: 39px; z-index: 1;
-        }
-        .card-content { position: relative; z-index: 10; width: 100%; }
-
         .bento-card { background: rgba(12, 12, 12, 0.75); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(40px); border-radius: 40px; padding: 2.5rem; transition: all 0.3s ease; }
 
         /* --- Clickable Deliverable Tiles --- */
@@ -52,133 +39,48 @@
             position: relative; z-index: 20;
         }
         .deliverable-tile:hover {
-            background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: rgba(255,255,255,0.08); border-color: rgba(59, 130, 246, 0.4); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* --- UI Elements --- */
-        .text-huge { font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.85; letter-spacing: -0.04em; }
-        .fixture-row { display: grid; grid-template-columns: 100px 1fr 100px; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .matchup-grid { display: grid; grid-template-columns: 1fr 40px 50px 40px 1fr; align-items: center; text-align: center; }
-        .flag-icon { width: 24px; height: 18px; object-fit: contain; display: inline-block; margin: 0 auto; }
-        .accent-blue { color: #3B82F6; }
-        .glass-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 100px; font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; }
-        
-        /* --- Modal Styles --- */
+        /* --- Modal Styling --- */
         #inventory-modal { visibility: hidden; opacity: 0; transition: all 0.4s ease; z-index: 1000; }
         #inventory-modal.active { visibility: visible; opacity: 1; }
         .modal-content-glass { background: #0a0a0a; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; overflow: hidden; }
 
         .logo-placeholder-badge {
             animation: pulseGlow 2s ease-in-out infinite;
-            background: rgba(59, 130, 246, 0.1);
+            background: rgba(59, 130, 246, 0.2);
             border: 2px dashed #3B82F6;
-            padding: 8px 16px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 12px;
             font-weight: 800;
             color: #ffffff;
             position: absolute;
-            top: 25px;
-            right: 25px;
+            top: 30px;
+            right: 30px;
             text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 1.5px;
+            font-size: 12px;
+            letter-spacing: 2px;
             pointer-events: none;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(8px);
         }
 
-        /* Data Bars */
-        .data-bar-bg { background: rgba(255, 255, 255, 0.05); height: 12px; border-radius: 10px; width: 100%; margin-top: 8px; overflow: hidden; }
-        .data-bar-fill { height: 100%; border-radius: 10px; transition: width 2s cubic-bezier(0.1, 0, 0, 1); width: 0; }
+        .accent-blue { color: #3B82F6; }
+        .glass-tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 100px; font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; }
     </style>
 </head>
 <body>
 
-    <!-- PAGE 1: HERO -->
+    <!-- HERO SECTION -->
     <section class="page-wrapper">
         <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/league2.png');"></div><div class="overlay"></div></div>
         <div class="content-relative" data-aos="fade-up">
             <p class="text-blue-500 font-bold tracking-[0.5em] uppercase text-xs mb-6">Official Digital Broadcasting Partner</p>
-            <h1 class="text-huge font-900 uppercase">ICC CRICKET<br>WORLD CUP<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">LEAGUE 2</span></h1>
-            <div class="mt-16 flex flex-wrap gap-12">
-                <div><p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">Competing Nations</p><p class="text-2xl font-light">Nepal • Oman • UAE</p></div>
-                <div class="hidden md:block w-[1px] h-16 bg-white/10"></div>
-                <div><p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">Tournament Window</p><p class="text-2xl font-bold accent-blue italic">March 10 — 20, 2026</p></div>
-            </div>
+            <h1 style="font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.85;" class="font-900 uppercase">ICC CRICKET<br>WORLD CUP<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">LEAGUE 2</span></h1>
         </div>
     </section>
 
-    <!-- PAGE 2: EVENT OVERVIEW -->
-    <section class="page-wrapper">
-        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page2.png');"></div><div class="overlay"></div></div>
-        <div class="content-relative">
-            <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
-                <div class="xl:col-span-4 grid grid-cols-1 gap-8">
-                    <div class="animated-card" style="--glow-color: #3B82F6;" data-aos="fade-right">
-                        <div class="card-content">
-                            <span class="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px]">Strategic Partnership</span>
-                            <h2 class="text-2xl font-800 mt-6 leading-tight">Official Exclusive Broadcast Partner</h2>
-                            <h2 class="text-7xl font-900 accent-blue mt-2 tracking-tighter uppercase">DGO</h2>
-                        </div>
-                    </div>
-                    <div class="animated-card" style="--glow-color: #22C55E;" data-aos="fade-right" data-aos-delay="200">
-                        <div class="card-content flex items-end justify-between">
-                            <div><span class="text-xs text-gray-500 font-bold uppercase mb-2">Match Format</span><h3 class="text-7xl font-900 leading-none">ODI</h3></div>
-                            <div class="text-right"><span class="text-xs text-gray-500 font-bold uppercase mb-2">Total Innings</span><h3 class="text-7xl font-900 leading-none">50<span class="text-2xl font-light text-gray-600 ml-1">OV</span></h3></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="xl:col-span-8" data-aos="fade-left">
-                    <div class="bento-card">
-                        <div class="flex justify-between items-start mb-10">
-                            <div><h3 class="text-2xl font-800 uppercase italic tracking-tighter">Match Fixtures</h3><p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] mt-1">Official Series Schedule</p></div>
-                            <div class="text-right"><p class="text-blue-500 font-bold text-xs uppercase tracking-widest">Kirtipur, Nepal</p><p class="text-white text-sm">TU Int'l Cricket Ground</p></div>
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 10</span><div class="matchup-grid"><span class="text-right font-bold text-lg">NEP</span><img src="https://flagcdn.com/w40/np.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/om.png" class="flag-icon"><span class="text-left font-bold text-lg">OMN</span></div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
-                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 12</span><div class="matchup-grid"><span class="text-right font-bold text-lg">OMN</span><img src="https://flagcdn.com/w40/om.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/ae.png" class="flag-icon"><span class="text-left font-bold text-lg">UAE</span></div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
-                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 14</span><div class="matchup-grid"><span class="text-right font-bold text-lg">NEP</span><img src="https://flagcdn.com/w40/np.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/ae.png" class="flag-icon"><span class="text-left font-bold text-lg">UAE</span></div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
-                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 16</span><div class="matchup-grid"><span class="text-right font-bold text-lg">NEP</span><img src="https://flagcdn.com/w40/np.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/om.png" class="flag-icon"><span class="text-left font-bold text-lg">OMN</span></div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
-                            <div class="fixture-row"><span class="text-sm font-bold text-gray-500">MAR 18</span><div class="matchup-grid"><span class="text-right font-bold text-lg">OMN</span><img src="https://flagcdn.com/w40/om.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/ae.png" class="flag-icon"><span class="text-left font-bold text-lg">UAE</span></div><span class="text-right text-xs font-bold text-gray-400">09:30 AM</span></div>
-                            <div class="fixture-row border-none"><span class="text-sm font-bold text-gray-500">MAR 20</span><div class="matchup-grid"><span class="text-right font-bold text-lg">NEP</span><img src="https://flagcdn.com/w40/np.png" class="flag-icon"><span class="text-gray-600 italic text-xs">vs</span><img src="https://flagcdn.com/w40/ae.png" class="flag-icon"><span class="text-left font-bold text-lg">UAE</span></div><span class="text-right text-xs font-bold text-gray-400 uppercase tracking-widest">09:30 AM</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PAGE 3: VIEWERSHIP DATA -->
-    <section id="viewership-section" class="page-wrapper">
-        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page3.png');"></div><div class="overlay"></div></div>
-        <div class="content-relative">
-            <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
-                <div class="xl:col-span-7 flex flex-col gap-6" data-aos="fade-right">
-                    <div class="bento-card">
-                        <div class="flex justify-between items-center mb-8">
-                            <h3 class="text-2xl font-900 uppercase italic tracking-tighter">The Nepal Impact</h3>
-                            <span class="glass-tag accent-blue">Historical Data</span>
-                        </div>
-                        <div class="space-y-6">
-                            <div><div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400"><span>Nepal vs USA (Peak)</span><span class="text-white text-base"><span class="counter" data-target="2738211">0</span> Viewers</span></div><div class="data-bar-bg"><div class="data-bar-fill bg-blue-600" data-width="100%"></div></div></div>
-                            <div><div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400"><span>Nepal vs UAE</span><span class="text-white text-base"><span class="counter" data-target="2272065">0</span> Viewers</span></div><div class="data-bar-bg"><div class="data-bar-fill bg-blue-500" data-width="83%"></div></div></div>
-                            <div><div class="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-400"><span>Nepal vs Netherlands</span><span class="text-white text-base"><span class="counter" data-target="1726804">0</span> Viewers</span></div><div class="data-bar-bg"><div class="data-bar-fill bg-blue-400" data-width="63%"></div></div></div>
-                            <div class="pt-6 mt-6 border-t border-white/10">
-                                <p class="text-[10px] text-gray-500 font-bold uppercase mb-4 tracking-widest">Neutral Match Baseline</p>
-                                <div class="flex justify-between text-xs font-bold uppercase text-gray-600"><span>USA vs UAE Match</span><span><span class="counter" data-target="434337">0</span> Viewers</span></div>
-                                <div class="data-bar-bg"><div class="data-bar-fill bg-gray-600" data-width="16%"></div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="xl:col-span-5 flex flex-col gap-6" data-aos="fade-left">
-                    <div class="bento-card border-l-4 border-blue-500"><span class="glass-tag accent-blue mb-4 inline-block">Iconic Series Moments</span><h4 class="text-xl font-900 uppercase mb-2">The Miracle at Kirtipur</h4><p class="text-sm text-gray-400 italic">Chasing 311, Nepal clinched a DLS thriller to qualify for the World Cup Qualifiers in 2023.</p></div>
-                    <div class="bento-card border-l-4 border-green-500"><h4 class="text-xl font-900 uppercase mb-2">The 1-Wicket Wide Escape</h4><p class="text-sm text-gray-400 italic">Nepal defeated Scotland in Oct 2024 through a dramatic wide ball on the final delivery.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PAGE 4: TITLE SPONSOR DELIVERABLES -->
+    <!-- TITLE SPONSOR PAGE -->
     <section class="page-wrapper">
         <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page4.png');"></div><div class="overlay"></div></div>
         <div class="content-relative">
@@ -188,67 +90,65 @@
                         <span class="glass-tag accent-blue mb-4 inline-block">Exclusive Tier</span>
                         <h2 class="text-5xl md:text-7xl font-900 uppercase leading-none">Title <span class="accent-blue">Sponsor</span></h2>
                     </div>
-                    <div class="bento-card py-6 px-10 border-blue-500/50">
-                        <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-500 mb-2">Series Title</p>
-                        <p class="text-xl font-800 text-white uppercase">[Your Brand] ICC CWC League 2 - Nepal, Oman, UAE</p>
-                    </div>
                 </div>
 
-                <!-- Deliverables Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <!-- Column 1 -->
+                    <!-- Column 1: Screen Real Estate -->
                     <div class="bento-card col-span-1" data-aos="fade-up">
                         <h4 class="text-blue-500 font-bold uppercase tracking-widest text-[10px] mb-4">Screen Real Estate</h4>
                         <div class="space-y-4">
                             <div class="deliverable-tile" onclick="openInventoryModal('perm_logo')">
                                 <p class="text-xs font-bold text-white uppercase">Permanent Screen Logo</p>
-                                <p class="text-[10px] text-gray-400">Fixed Top-Right brand watermark present throughout the entire live match broadcast.</p>
+                                <p class="text-[10px] text-gray-400">Constant Top-Right presence for maximum brand recall.</p>
                             </div>
                             <div class="deliverable-tile border-blue-500/20 bg-blue-500/5" onclick="openInventoryModal('replay_logo')">
                                 <p class="text-xs font-bold text-blue-400 uppercase">Replay Logo Branding</p>
-                                <p class="text-[10px] text-gray-400">Brand-exclusive animated transition logo appearing before every replay.</p>
+                                <p class="text-[10px] text-gray-400">Exclusive branding on all match highlight transitions.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Column 2 -->
+
+                    <!-- Column 2: Visual Identity -->
                     <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="100">
                         <h4 class="text-green-500 font-bold uppercase tracking-widest text-[10px] mb-4">Visual Identity</h4>
                         <div class="space-y-4">
                             <div class="deliverable-tile" onclick="openInventoryModal('l_shape')">
                                 <p class="text-xs font-bold text-white uppercase">L-Shaped & Aston Ads</p>
-                                <p class="text-[10px] text-gray-400">High-visibility side and bottom-third overlays triggered during active gameplay.</p>
+                                <p class="text-[10px] text-gray-400">Non-intrusive ads during live gameplay action.</p>
                             </div>
                             <div class="deliverable-tile" onclick="openInventoryModal('contextual')">
                                 <p class="text-xs font-bold text-white uppercase">Contextual Ads</p>
-                                <p class="text-[10px] text-gray-400">Smart triggers during Bowling Changes and Fall of Wickets.</p>
+                                <p class="text-[10px] text-gray-400">Dynamic triggers during wickets and bowling changes.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Column 3 -->
+
+                    <!-- Column 3: Commercial Media -->
                     <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="200">
                         <h4 class="text-purple-500 font-bold uppercase tracking-widest text-[10px] mb-4">Commercial Media</h4>
                         <div class="space-y-4">
                             <div class="deliverable-tile border-purple-500/20 bg-purple-500/5" onclick="openInventoryModal('tvc')">
                                 <p class="text-xs font-bold text-purple-400 uppercase">TVC Mid-Rolls</p>
-                                <p class="text-[10px] text-gray-400">Premium 30s & 15s spots broadcast during every over-break transition.</p>
+                                <p class="text-[10px] text-gray-400">Standard 30s/15s spots during every over break.</p>
                             </div>
                             <div class="deliverable-tile" onclick="openInventoryModal('score_bug')">
                                 <p class="text-xs font-bold text-white uppercase">Score Bug Logo</p>
-                                <p class="text-[10px] text-gray-400">Primary brand placement integrated into the live digital match score-bug.</p>
+                                <p class="text-[10px] text-gray-400">Logo integration next to the match scoreboard.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Column 4 -->
+
+                    <!-- Column 4: DGO Ecosystem -->
                     <div class="bento-card col-span-1" data-aos="fade-up" data-aos-delay="300">
                         <h4 class="text-gray-400 font-bold uppercase tracking-widest text-[10px] mb-4">DGO App Ecosystem</h4>
                         <div class="space-y-4">
                             <div class="deliverable-tile" onclick="openInventoryModal('home_takeover')">
                                 <p class="text-xs font-bold text-white uppercase">Home Screen Takeover</p>
-                                <p class="text-[10px] text-gray-400">Full UI skinning of the DGO App in your brand colors for the duration.</p>
+                                <p class="text-[10px] text-gray-400">Complete UI skinning of the DGO App Home.</p>
                             </div>
                             <div class="deliverable-tile" onclick="openInventoryModal('notifications')">
                                 <p class="text-xs font-bold text-white uppercase">Push Notifications</p>
-                                <p class="text-[10px] text-gray-400">Sponsor-branded match alerts sent to 1.5M+ active users.</p>
+                                <p class="text-[10px] text-gray-400">Sponsor-branded alerts sent to 1.5M users.</p>
                             </div>
                         </div>
                     </div>
@@ -257,19 +157,19 @@
         </div>
     </section>
 
-    <!-- INVENTORY DETAIL MODAL -->
+    <!-- INVENTORY MODAL -->
     <div id="inventory-modal" class="fixed inset-0 flex items-center justify-center p-6 backdrop-blur-3xl">
         <div class="absolute inset-0 bg-black/90" onclick="closeInventoryModal()"></div>
         <div class="modal-content-glass max-w-6xl w-full rounded-[40px] shadow-2xl relative">
             <button onclick="closeInventoryModal()" class="absolute top-6 right-8 z-50 text-white/40 hover:text-white transition text-4xl font-light">&times;</button>
             <div class="grid grid-cols-1 lg:grid-cols-2 w-full">
-                <!-- Media Section -->
-                <div class="relative bg-[#111] aspect-video lg:aspect-auto flex items-center justify-center overflow-hidden min-h-[400px]">
+                <!-- Media Preview -->
+                <div class="relative bg-[#111] aspect-video lg:aspect-auto flex items-center justify-center overflow-hidden min-h-[450px]">
                     <div id="modal-media-container" class="w-full h-full relative">
-                        <!-- Content Injected Here -->
+                        <!-- Image Injected Here -->
                     </div>
                 </div>
-                <!-- Info Section -->
+                <!-- Content Description -->
                 <div class="p-12 lg:p-16 flex flex-col justify-center bg-[#0a0a0a]">
                     <div class="mb-8">
                         <span id="modal-tag" class="text-blue-500 font-bold uppercase tracking-[0.3em] text-[10px] block mb-2">Category</span>
@@ -278,46 +178,12 @@
                     <p id="modal-desc" class="text-gray-400 text-lg leading-relaxed mb-10">Description</p>
                     <div class="p-8 bg-white/[0.03] rounded-3xl border border-white/10">
                         <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3">Sponsorship Impact</p>
-                        <p id="modal-impact" class="text-blue-400 font-semibold italic text-lg">Impact Detail</p>
+                        <p id="modal-impact" class="text-blue-400 font-semibold italic text-xl">Impact Detail</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- PAGE 5: PLATFORM ECOSYSTEM -->
-    <section class="page-wrapper">
-        <div class="bg-container"><div class="bg-layer" style="background-image: url('assets/page5.png');"></div><div class="overlay"></div></div>
-        <div class="content-relative">
-            <div class="mb-12" data-aos="fade-up">
-                <h2 class="text-6xl font-900 uppercase leading-none">THE DGO<br><span class="accent-blue">ADVANTAGE</span></h2>
-                <p class="text-gray-400 mt-4 max-w-xl">Direct access to Nepal's largest digital sports community.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bento-card text-center" data-aos="zoom-in" data-aos-delay="100">
-                    <h3 class="text-5xl font-900 mb-2">1.5M+</h3>
-                    <p class="text-blue-500 font-bold uppercase tracking-widest text-[10px]">App Downloads</p>
-                </div>
-                <div class="bento-card text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <h3 class="text-5xl font-900 mb-2">42 MIN</h3>
-                    <p class="text-green-500 font-bold uppercase tracking-widest text-[10px]">Avg. Session</p>
-                </div>
-                <div class="bento-card text-center" data-aos="zoom-in" data-aos-delay="300">
-                    <h3 class="text-5xl font-900 mb-2">18-34</h3>
-                    <p class="text-purple-500 font-bold uppercase tracking-widest text-[10px]">Core Demographic</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="page-wrapper !min-h-[50vh] bg-black">
-        <div class="content-relative text-center">
-            <h2 class="text-5xl md:text-7xl font-900 uppercase mb-8">Ready to <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400">Play?</span></h2>
-            <p class="text-xl font-bold italic">partnerships@dgo.com.np</p>
-            <p class="mt-20 text-[10px] text-gray-600 font-bold uppercase tracking-[0.5em]">© 2024 DGO Broadcasting Network</p>
-        </div>
-    </footer>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -328,18 +194,61 @@
             perm_logo: {
                 tag: "Screen Real Estate",
                 title: "Permanent Screen Logo",
-                desc: "Your brand logo is fixed as a watermark in the Top-Right corner of the broadcast. Unlike commercials, this remains on-screen throughout the entire 100 overs, providing maximum passive brand recall.",
-                impact: "Highest Gaze-Time of any visual asset.",
+                desc: "Your brand logo is fixed as a watermark in the Top-Right corner of the live broadcast. Unlike 30-second commercials that viewers may skip, this remains on-screen for the entire 100 overs of the match, ensuring constant visibility.",
+                impact: "Highest 'Gaze-Time' and passive recall of any asset.",
                 url: "assets/logo1.png",
                 showBadge: true
             },
-            replay_logo: { tag: "Premium Branding", title: "Replay Logo Branding", desc: "Brand-exclusive transition logo before every replay.", impact: "High emotional impact.", url: "assets/page4.png" },
-            l_shape: { tag: "Visual Identity", title: "L-Shaped Ads", desc: "Overlays appearing during active gameplay without interrupting the action.", impact: "Seamless brand integration.", url: "assets/page4.png" },
-            contextual: { tag: "Smart Trigger", title: "Contextual Ads", desc: "Targeted ads triggered by bowling changes and wickets.", impact: "Captures peak audience attention.", url: "assets/page4.png" },
-            tvc: { tag: "Commercial Media", title: "TVC Mid-Rolls", desc: "Traditional 30s and 15s commercial spots during breaks.", impact: "Storytelling and product education.", url: "assets/page4.png" },
-            score_bug: { tag: "UI Integration", title: "Score Bug Logo", desc: "Branding integrated directly into the live score display.", impact: "Most frequently viewed asset.", url: "assets/page4.png" },
-            home_takeover: { tag: "Digital Ecosystem", title: "App Home Takeover", desc: "Complete DGO app UI reskinning in your brand colors.", impact: "Total digital platform dominance.", url: "assets/page4.png" },
-            notifications: { tag: "Direct Engagement", title: "Push Notifications", desc: "Direct branded alerts for match starts and results.", impact: "High click-through conversion.", url: "assets/page4.png" }
+            replay_logo: {
+                tag: "High-Impact Branding",
+                title: "Replay Logo Branding",
+                desc: "Every slow-motion replay transition features your brand. By appearing during the most high-octane moments (wickets and boundaries), your logo is associated with the viewer's peak emotional excitement.",
+                impact: "Association with match-defining 'Miracle' moments.",
+                url: "assets/page4.png",
+                showBadge: true
+            },
+            l_shape: {
+                tag: "Visual Identity",
+                title: "L-Shaped & Aston Ads",
+                desc: "Dynamic animated graphics that wrap around the live footage. These are the modern standard for sports broadcasting, allowing your brand to communicate key messages without stopping the gameplay.",
+                impact: "Uninterrupted brand communication during live action.",
+                url: "assets/page4.png"
+            },
+            contextual: {
+                tag: "Smart Trigger",
+                title: "Contextual Ads",
+                desc: "Intelligence-driven ad triggers. When a wicket falls or a bowling change occurs, a specific 'Brand Moment' overlay appears, capturing the viewer's attention exactly when focus is highest.",
+                impact: "Targeted delivery at high-emotional-stakes moments.",
+                url: "assets/page4.png"
+            },
+            tvc: {
+                tag: "Commercial Media",
+                title: "TVC Mid-Rolls",
+                desc: "Traditional 30-second and 15-second high-definition commercial spots broadcast during every over-break. This is the primary window for deep storytelling and detailed product showcase.",
+                impact: "Maximum audio-visual storytelling potential.",
+                url: "assets/page4.png"
+            },
+            score_bug: {
+                tag: "Critical UI",
+                title: "Score Bug Logo",
+                desc: "Your brand is integrated directly into the Match Score-Bug. Since fans look at the scoreboard every 10-15 seconds, this placement offers the highest frequency of visual touchpoints.",
+                impact: "Consistent, functional, and unavoidable brand presence.",
+                url: "assets/page4.png"
+            },
+            home_takeover: {
+                tag: "Digital Ecosystem",
+                title: "App Home Takeover",
+                desc: "The entire DGO application UI is reskinned in your brand colors and imagery. Every user who opens the app to watch the match is immediately greeted by your brand's visual identity.",
+                impact: "100% Share-of-Voice across Nepal's largest sports app.",
+                url: "assets/page4.png"
+            },
+            notifications: {
+                tag: "Direct Engagement",
+                title: "Push Notifications",
+                desc: "Direct push alerts sent to over 1.5M+ active mobile users. Notifications for 'Match Starting' or 'Wicket Alerts' are powered by your brand, landing directly on the user's lock screen.",
+                impact: "Immediate click-through and direct fan engagement.",
+                url: "assets/page4.png"
+            }
         };
 
         const modal = document.getElementById('inventory-modal');
@@ -354,10 +263,9 @@
             document.getElementById('modal-desc').innerText = data.desc;
             document.getElementById('modal-impact').innerText = data.impact;
 
-            // Inject Image (Fill black space with object-cover)
+            // Use Object-Cover to fill black space completely
             mediaContainer.innerHTML = `<img src="${data.url}" class="w-full h-full object-cover" alt="${data.title}">`;
 
-            // Inject Badge for logo card
             if (data.showBadge) {
                 mediaContainer.innerHTML += `<div class="logo-placeholder-badge">Your Logo Here</div>`;
             }
@@ -370,26 +278,6 @@
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-
-        // Viewership Data Logic
-        const observer = new IntersectionObserver((entries) => {
-            if(entries[0].isIntersecting) {
-                document.querySelectorAll('.data-bar-fill').forEach(bar => { bar.style.width = bar.getAttribute('data-width'); });
-                document.querySelectorAll('.counter').forEach(counter => {
-                    const target = +counter.getAttribute('data-target');
-                    const updateCount = () => {
-                        const current = +counter.innerText.replace(/,/g, '');
-                        if (current < target) {
-                            const next = Math.ceil(current + (target / 100));
-                            counter.innerText = (next > target ? target : next).toLocaleString();
-                            setTimeout(updateCount, 16);
-                        }
-                    };
-                    updateCount();
-                });
-            }
-        }, { threshold: 0.3 });
-        if(document.getElementById('viewership-section')) observer.observe(document.getElementById('viewership-section'));
     </script>
 </body>
 </html>
